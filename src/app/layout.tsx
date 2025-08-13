@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import QueryProvider from '@/lib/providers/query-provider';
@@ -6,7 +6,14 @@ import Header from '@/components/layout/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#000000',
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://hordearii.ca'),
   title: 'Johan Dominguez - Portfolio Professionnel | Hordearii',
   description: 'Portfolio professionnel de Johan Dominguez - Développeur Full Stack, Musicien, Athlète et Pâtissier. Découvrez mes projets, compétences et expériences.',
   keywords: 'Johan Dominguez, développeur, portfolio, full stack, React, Node.js, Flutter, musique, athlète, pâtissier',
@@ -36,8 +43,6 @@ export const metadata: Metadata = {
     description: 'Portfolio professionnel de Johan Dominguez - Développeur Full Stack, Musicien, Athlète et Pâtissier.',
     images: ['/og-image.jpg'],
   },
-  viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#000000',
   manifest: '/manifest.json',
 };
 

@@ -140,7 +140,7 @@ export const analyticsService = {
     return response.data;
   },
   
-  trackEvent: async (event: string, data?: any) => {
+  trackEvent: async (event: string, data?: Record<string, unknown>) => {
     const response = await api.post('/analytics/event', { event, data });
     return response.data;
   },

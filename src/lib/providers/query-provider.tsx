@@ -15,10 +15,11 @@ export default function QueryProvider({ children }: { children: React.ReactNode 
             // Temps de cache en mémoire (10 minutes)
             gcTime: 10 * 60 * 1000,
             // Retry en cas d'échec
-            retry: (failureCount, error: any) => {
+            retry: (failureCount, error: unknown) => {
               // Ne pas retry pour les erreurs 4xx (sauf 408, 429)
-              if (error?.response?.status >= 400 && error?.response?.status < 500) {
-                if (error?.response?.status === 408 || error?.response?.status === 429) {
+              const axiosError = error as { response?: { status?: number } };
+              if (axiosError?.response?.status && axiosError.response.status >= 400 && axiosError.response.status < 500) {
+                if (axiosError.response.status === 408 || axiosError.response.status === 429) {
                   return failureCount < 3;
                 }
                 return false;
