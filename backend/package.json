@@ -1,0 +1,31 @@
+{
+  "name": "hordearii-backend",
+  "version": "1.0.0",
+  "description": "Backend API pour le portfolio professionnel de Johan Dominguez",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": ["portfolio", "api", "express", "typescript", "hordearii"],
+  "author": "Johan Dominguez <johan_dominguez@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "@types/express": "^4.17.17",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "@types/cors": "^2.8.13"
+  }
+}
