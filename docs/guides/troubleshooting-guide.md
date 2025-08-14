@@ -74,6 +74,56 @@ export const metadata: Metadata = {
 };
 ```
 
+### Erreurs Backend
+
+#### 1. Erreur `ts-node: not found`
+**Problème :** Nodemon ne trouve pas ts-node
+
+**Solution :**
+```bash
+# Installer ts-node
+npm install --save-dev ts-node
+
+# Corriger le script dans package.json
+"dev": "nodemon --exec ts-node src/index.ts"
+```
+
+#### 2. Erreur `@types/morgan` manquant
+**Problème :** Types TypeScript manquants pour morgan
+
+**Solution :**
+```bash
+npm install --save-dev @types/morgan
+```
+
+#### 3. Erreur d'accès aux variables d'environnement
+**Problème :** TypeScript strict avec process.env
+
+**Solution :**
+```typescript
+// ❌ Incorrect
+const PORT = process.env.PORT || 3001;
+
+// ✅ Correct
+const PORT = process.env['PORT'] || 3001;
+```
+
+#### 4. Variables non utilisées
+**Problème :** TypeScript strict avec variables non utilisées
+
+**Solution :**
+```typescript
+// ❌ Incorrect
+app.get('/', (req, res) => {
+  // req non utilisé
+});
+
+// ✅ Correct
+app.get('/', (_req, res) => {
+  // _req indique que c'est intentionnellement non utilisé
+});
+```
+
 ### Erreurs de Build
 
 #### Build échoue avec erreurs TypeScript
@@ -123,7 +173,23 @@ git branch -M main
 git push -u origin main
 ```
 
-### 3. Vérification
+### 3. Structure Monorepo
+
+```bash
+# Réorganisation en monorepo
+mkdir frontend backend
+mv hordearii-website/* frontend/
+mv .git frontend/
+mv frontend/.git .
+mv frontend/.gitignore .gitignore.frontend
+
+# Créer .gitignore unifié
+# Ajouter tous les fichiers
+git add .
+git commit -m "feat: Réorganisation en monorepo"
+```
+
+### 4. Vérification
 
 ```bash
 # Vérifier les remotes
@@ -136,7 +202,7 @@ git status
 git branch -a
 ```
 
-### 4. Commandes Utiles
+### 5. Commandes Utiles
 
 ```bash
 # Pousser les changements
@@ -158,16 +224,22 @@ git merge feature/nom-feature
 
 ### 1. Build de Production
 ```bash
-npm run build
+# Frontend
+cd frontend && npm run build
+
+# Backend
+cd backend && npm run build
 ```
 
 ### 2. Tests Locaux
 ```bash
-# Serveur de développement
-npm run dev
-
-# Vérifier l'URL
+# Frontend
+cd frontend && npm run dev
 curl -s -o /dev/null -w "%{http_code}" http://localhost:3000
+
+# Backend
+cd backend && npm run dev
+curl -s http://localhost:3001/health
 ```
 
 ### 3. Vérifications Code
@@ -197,13 +269,11 @@ npx tsc --noEmit
 
 ### Structure du Projet
 ```
-hordearii-website/
-├── src/
-│   ├── app/              # Next.js App Router
-│   ├── components/       # Composants React
-│   └── lib/             # Utilitaires et configurations
-├── docs/                # Documentation
-└── README.md           # Documentation principale
+jobcv/
+├── frontend/          # Code Next.js
+├── backend/           # Code Node.js
+├── docs/             # Documentation
+└── README.md         # Documentation principale
 ```
 
 ---
