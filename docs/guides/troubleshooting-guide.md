@@ -1,287 +1,150 @@
 # 🔧 Guide de Dépannage - HORDEARII.CA
 
-## 📋 Erreurs Rencontrées et Solutions
+## 🚨 Erreurs TypeScript Courantes et Solutions
 
-### Erreurs TypeScript et ESLint
+### 1. Erreurs d'imports non utilisés (TS6133)
 
-#### 1. Erreur `@typescript-eslint/no-explicit-any`
-**Problème :** ESLint interdit l'utilisation du type `any`
+**Problème :** `'variable' is declared but its value is never read.`
 
-**Fichier :** `src/lib/api/services.ts`
+**Solutions :**
 ```typescript
 // ❌ Incorrect
-trackEvent: async (event: string, data?: any) => {
-  const response = await api.post('/analytics/event', { event, data });
-  return response.data;
-}
+import { generalLimiter, authLimiter, contactLimiter, apiLimiter } from './middleware/rateLimit';
 
-// ✅ Solution
-trackEvent: async (event: string, data?: Record<string, unknown>) => {
-  const response = await api.post('/analytics/event', { event, data });
-  return response.data;
-}
+// ✅ Correct - Importer seulement ce qui est utilisé
+import { generalLimiter } from './middleware/rateLimit';
 ```
 
-#### 2. Erreur dans React Query Provider
-**Problème :** Type `any` dans la fonction retry
+### 2. Paramètres de fonction non utilisés (TS6133)
 
-**Fichier :** `src/lib/providers/query-provider.tsx`
+**Problème :** `'req' is declared but its value is never read.`
+
+**Solutions :**
 ```typescript
 // ❌ Incorrect
-retry: (failureCount, error: any) => {
-  if (error?.response?.status >= 400 && error?.response?.status < 500) {
-    // ...
-  }
-}
+export const customSecurityHeaders = (req: Request, res: Response, next: NextFunction) => {
 
-// ✅ Solution
-retry: (failureCount, error: unknown) => {
-  const axiosError = error as { response?: { status?: number } };
-  if (axiosError?.response?.status && axiosError.response.status >= 400 && axiosError.response.status < 500) {
-    if (axiosError.response.status === 408 || axiosError.response.status === 429) {
-      return failureCount < 3;
-    }
-    return false;
-  }
-  return failureCount < 3;
-}
+// ✅ Correct - Préfixer avec underscore
+export const customSecurityHeaders = (_req: Request, res: Response, next: NextFunction) => {
 ```
 
-#### 3. Warnings Metadata Next.js 15
-**Problème :** Warnings sur viewport et themeColor dans metadata
+### 3. Chemins de retour manquants (TS7030)
 
-**Fichier :** `src/app/layout.tsx`
+**Problème :** `Not all code paths return a value.`
+
+**Solutions :**
 ```typescript
-// ❌ Incorrect - Next.js 15
-export const metadata: Metadata = {
-  viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#000000',
-  // ...
-}
-
-// ✅ Solution - Next.js 15
-import type { Metadata, Viewport } from 'next';
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  themeColor: '#000000',
+// ❌ Incorrect
+export const blockSuspiciousRequests = (req: Request, res: Response, next: NextFunction) => {
+  if (condition) {
+    return res.status(403).json({ error: 'Blocked' });
+  }
+  next(); // Pas de return
 };
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://hordearii.ca'),
-  // ... autres métadonnées
+// ✅ Correct - Toujours retourner
+export const blockSuspiciousRequests = (req: Request, res: Response, next: NextFunction) => {
+  if (condition) {
+    return res.status(403).json({ error: 'Blocked' });
+  }
+  return next(); // Avec return
 };
 ```
 
-### Erreurs Backend
+### 4. Propriétés inexistantes sur les types (TS2339)
 
-#### 1. Erreur `ts-node: not found`
-**Problème :** Nodemon ne trouve pas ts-node
+**Problème :** `Property 'path' does not exist on type 'ValidationError'.`
 
-**Solution :**
-```bash
-# Installer ts-node
-npm install --save-dev ts-node
-
-# Corriger le script dans package.json
-"dev": "nodemon --exec ts-node src/index.ts"
-```
-
-#### 2. Erreur `@types/morgan` manquant
-**Problème :** Types TypeScript manquants pour morgan
-
-**Solution :**
-```bash
-npm install --save-dev @types/morgan
-```
-
-#### 3. Erreur d'accès aux variables d'environnement
-**Problème :** TypeScript strict avec process.env
-
-**Solution :**
+**Solutions :**
 ```typescript
 // ❌ Incorrect
-const PORT = process.env.PORT || 3001;
+details: errors.array().map(error => ({
+  field: error.path, // Propriété inexistante
+  message: error.msg,
+  value: error.value // Propriété inexistante
+}))
 
-// ✅ Correct
-const PORT = process.env['PORT'] || 3001;
+// ✅ Correct - Utiliser les propriétés disponibles
+details: errors.array().map(error => ({
+  field: error.type,
+  message: error.msg
+}))
 ```
 
-#### 4. Variables non utilisées
-**Problème :** TypeScript strict avec variables non utilisées
+### 5. Erreurs express-rate-limit IPv6
 
-**Solution :**
+**Problème :** `Custom keyGenerator appears to use request IP without calling the ipKeyGenerator helper function for IPv6 addresses.`
+
+**Solutions :**
 ```typescript
-// ❌ Incorrect
-app.get('/', (req, res) => {
-  // req non utilisé
-});
+// ❌ Incorrect - keyGenerator personnalisé avec req.ip
+keyGenerator: (req) => {
+  return req.ip + ':' + (req.body?.email || 'unknown');
+}
 
-// ✅ Correct
-app.get('/', (_req, res) => {
-  // _req indique que c'est intentionnellement non utilisé
-});
+// ✅ Correct - Supprimer le keyGenerator personnalisé
+// Laisser express-rate-limit gérer automatiquement les IPs
 ```
 
-### Erreurs de Build
+## 🔧 Configuration TypeScript Strict
 
-#### Build échoue avec erreurs TypeScript
-```bash
-# Solution
-npm run build
-
-# Si erreurs persistantes
-rm -rf .next
-npm run build
+### tsconfig.json Recommandé
+```json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
 ```
 
-#### Warnings de metadata
-- Ajouter `metadataBase` pour les images Open Graph
-- Utiliser l'export `viewport` séparé
-- Vérifier les URLs des images
+## 🚀 Bonnes Pratiques
 
----
+### 1. Imports
+- Importer seulement ce qui est utilisé
+- Utiliser des imports nommés plutôt que par défaut
+- Éviter les imports circulaires
 
-## 🚀 Configuration GitHub Repository
+### 2. Paramètres de fonction
+- Préfixer avec `_` les paramètres non utilisés
+- Toujours retourner une valeur dans les middlewares
+- Utiliser `return next()` au lieu de `next()`
 
-### 1. Créer le Repository GitHub
+### 3. Types
+- Éviter `any`, utiliser `unknown` ou types spécifiques
+- Utiliser les interfaces pour les objets
+- Typer les props des composants
 
-1. **Aller sur GitHub.com** et se connecter
-2. **Cliquer sur "New repository"** (bouton vert)
-3. **Configurer le repository :**
-   - **Repository name :** `hordearii-website`
-   - **Description :** `Portfolio professionnel de Johan Dominguez - Développeur Full Stack, Musicien, Athlète et Pâtissier`
-   - **Visibilité :** Public (ou Private selon préférence)
-   - **Ne pas initialiser** avec README, .gitignore, ou license
+### 4. Validation
+- Utiliser les propriétés correctes des objets d'erreur
+- Vérifier la documentation des bibliothèques
+- Tester les types avec `typeof` et `instanceof`
 
-### 2. Configuration GitHub CLI (Recommandé)
+## 📋 Checklist de Vérification
 
-```bash
-# Installer GitHub CLI
-sudo apt update && sudo apt install gh -y
+Avant de commiter :
+- [ ] `npm run type-check` passe sans erreurs
+- [ ] `npm run lint` passe sans erreurs
+- [ ] Tous les imports sont utilisés
+- [ ] Tous les paramètres sont utilisés ou préfixés avec `_`
+- [ ] Tous les chemins de retour sont corrects
+- [ ] Les types correspondent aux propriétés réelles
 
-# Authentifier
-gh auth login
-# Suivre les instructions interactives
+## 🔗 Ressources
 
-# Configurer le remote
-git remote add origin https://github.com/ComeToM3/Portfolio-website.git
-git branch -M main
-
-# Pousser le code
-git push -u origin main
-```
-
-### 3. Structure Monorepo
-
-```bash
-# Réorganisation en monorepo
-mkdir frontend backend
-mv hordearii-website/* frontend/
-mv .git frontend/
-mv frontend/.git .
-mv frontend/.gitignore .gitignore.frontend
-
-# Créer .gitignore unifié
-# Ajouter tous les fichiers
-git add .
-git commit -m "feat: Réorganisation en monorepo"
-```
-
-### 4. Vérification
-
-```bash
-# Vérifier les remotes
-git remote -v
-
-# Vérifier le statut
-git status
-
-# Vérifier les branches
-git branch -a
-```
-
-### 5. Commandes Utiles
-
-```bash
-# Pousser les changements
-git add .
-git commit -m "feat: description"
-git push
-
-# Créer une nouvelle branche
-git checkout -b feature/nom-feature
-
-# Fusionner une branche
-git checkout main
-git merge feature/nom-feature
-```
-
----
-
-## 🔍 Vérifications Pré-Déploiement
-
-### 1. Build de Production
-```bash
-# Frontend
-cd frontend && npm run build
-
-# Backend
-cd backend && npm run build
-```
-
-### 2. Tests Locaux
-```bash
-# Frontend
-cd frontend && npm run dev
-curl -s -o /dev/null -w "%{http_code}" http://localhost:3000
-
-# Backend
-cd backend && npm run dev
-curl -s http://localhost:3001/health
-```
-
-### 3. Vérifications Code
-```bash
-# Linting
-npm run lint
-
-# Type checking
-npx tsc --noEmit
-```
-
----
-
-## 📝 Notes Importantes
-
-### Conventions de Nommage
-- **Composants :** PascalCase (`Header.tsx`)
-- **Fichiers :** kebab-case (`api-services.ts`)
-- **Variables :** camelCase (`userName`)
-- **Constantes :** UPPER_SNAKE_CASE (`API_BASE_URL`)
-
-### Commits
-- **Format :** `feat: description` ou `fix: description`
-- **Exemples :**
-  - `feat: Initialisation du projet Next.js avec Tailwind CSS`
-  - `fix: Correction des erreurs TypeScript dans services API`
-
-### Structure du Projet
-```
-jobcv/
-├── frontend/          # Code Next.js
-├── backend/           # Code Node.js
-├── docs/             # Documentation
-└── README.md         # Documentation principale
-```
-
----
-
-## 🆘 Support
-
-En cas de problème :
-1. Vérifier ce guide de dépannage
-2. Consulter la documentation officielle
-3. Vérifier les issues GitHub
-4. Contacter l'équipe de développement
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Express Rate Limit Documentation](https://express-rate-limit.github.io/)
+- [Express Validator Documentation](https://express-validator.github.io/)

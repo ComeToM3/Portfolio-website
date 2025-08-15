@@ -45,7 +45,7 @@ export const authenticateToken = async (
     }
 
     req.user = user;
-    next();
+    return next();
   } catch (error) {
     if (error instanceof jwt.JsonWebTokenError) {
       return res.status(403).json({ error: 'Token invalide' });
@@ -69,7 +69,7 @@ export const requireRole = (roles: string[]) => {
       return res.status(403).json({ error: 'Permissions insuffisantes' });
     }
 
-    next();
+    return next();
   };
 };
 
