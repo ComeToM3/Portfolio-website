@@ -1,73 +1,106 @@
 import express from 'express';
 import cors from 'cors';
-import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+
+// Import des middlewares de sécurité
+import { securityHeaders, customSecurityHeaders, blockSuspiciousRequests, validateOrigin, logSecurityEvents, limitRequestSize } from './middleware/security';
+import { generalLimiter } from './middleware/rateLimit';
+import { sanitizeInput } from './middleware/validation';
+import { errorHandler, notFoundHandler, methodNotAllowedHandler } from './middleware/errorHandler';
 
 // Charger les variables d'environnement
 dotenv.config();
 
 const app = express();
-const PORT = process.env['PORT'] || 3001;
+const port = process.env['PORT'] || 3001;
 
-// Middleware de sécurité
-app.use(helmet());
+// Middleware de sécurité (ordre important)
+app.use(securityHeaders);
+app.use(customSecurityHeaders);
+app.use(blockSuspiciousRequests);
+app.use(validateOrigin);
+app.use(logSecurityEvents);
+app.use(limitRequestSize);
 
-// Middleware CORS
+// Rate limiting
+app.use(generalLimiter);
+
+// CORS avec configuration stricte
 app.use(cors({
-  origin: process.env['FRONTEND_URL'] || 'http://localhost:3000',
+  origin: [
+    process.env['FRONTEND_URL'] || 'http://localhost:3000',
+    'https://hordearii.ca',
+    'https://www.hordearii.ca'
+  ],
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  exposedHeaders: ['X-Total-Count', 'X-Page-Count']
 }));
 
-// Middleware de logging
-app.use(morgan('combined'));
+// Logging
+app.use(morgan('combined', {
+  skip: (req) => req.url === '/health' // Ne pas logger les health checks
+}));
 
-// Middleware pour parser le JSON
+// Parsing des requêtes
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Route de base
+// Sanitization des inputs
+app.use(sanitizeInput);
+
+// Routes de base
 app.get('/', (_req, res) => {
   res.json({
-    message: 'Hordearii Backend API',
+    message: '🚀 Hordearii Backend API',
     version: '1.0.0',
-    author: 'Johan Dominguez',
-    status: 'running'
+    status: 'running',
+    timestamp: new Date().toISOString(),
+    environment: process.env['NODE_ENV'] || 'development'
   });
 });
 
-// Route de santé
 app.get('/health', (_req, res) => {
   res.json({
     status: 'healthy',
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
+    environment: process.env['NODE_ENV'] || 'development',
+    version: '1.0.0'
   });
 });
 
-// Gestion des erreurs 404
-app.use('*', (req, res) => {
-  res.status(404).json({
-    error: 'Route not found',
-    path: req.originalUrl
+// Route pour les informations de sécurité (admin seulement)
+app.get('/security-info', (_req, res) => {
+  res.json({
+    security: {
+      rateLimiting: 'enabled',
+      cors: 'configured',
+      helmet: 'enabled',
+      validation: 'enabled',
+      sanitization: 'enabled'
+    },
+    timestamp: new Date().toISOString()
   });
 });
 
-// Middleware de gestion d'erreurs global
-app.use((err: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
-  console.error('Error:', err);
-  
-  res.status(500).json({
-    error: 'Internal server error',
-    message: process.env['NODE_ENV'] === 'development' ? err.message : 'Something went wrong'
-  });
-});
+// Gestion des routes non trouvées
+app.use('*', notFoundHandler);
+
+// Gestion des méthodes HTTP non autorisées
+app.use(methodNotAllowedHandler);
+
+// Gestionnaire d'erreurs global (doit être en dernier)
+app.use(errorHandler);
 
 // Démarrer le serveur
-app.listen(PORT, () => {
-  console.log(`🚀 Hordearii Backend API running on port ${PORT}`);
-  console.log(`📊 Health check: http://localhost:${PORT}/health`);
+app.listen(port, () => {
+  console.log(`🚀 Hordearii Backend API running on port ${port}`);
+  console.log(`📊 Health check: http://localhost:${port}/health`);
   console.log(`🌍 Environment: ${process.env['NODE_ENV'] || 'development'}`);
+  console.log(`🔒 Security: Rate limiting, CORS, Helmet, Validation enabled`);
 });
 
 export default app;
