@@ -86,6 +86,72 @@ keyGenerator: (req) => {
 // Laisser express-rate-limit gérer automatiquement les IPs
 ```
 
+### 6. Erreurs de propriétés d'index signature (TS4111)
+
+**Problème :** `Property 'featured' comes from an index signature, so it must be accessed with ['featured'].`
+
+**Solutions :**
+```typescript
+// ❌ Incorrect
+const filters = {
+  featured: req.query.featured === 'true' ? true : false,
+  search: req.query.search as string
+};
+
+// ✅ Correct - Utiliser la notation bracket
+const filters = {
+  featured: req.query['featured'] === 'true' ? true : false,
+  search: req.query['search'] as string
+};
+
+// ✅ Alternative - Type casting
+const filters = {
+  featured: (req.query as any).featured === 'true' ? true : false,
+  search: (req.query as any).search as string
+};
+```
+
+### 7. Erreurs de types optionnels stricts (TS2375)
+
+**Problème :** `Type 'boolean | undefined' is not assignable to type 'boolean' with 'exactOptionalPropertyTypes: true'.`
+
+**Solutions :**
+```typescript
+// ❌ Incorrect
+const filters: ProjectFilters = {
+  featured: req.query.featured === 'true' ? true : undefined
+};
+
+// ✅ Correct - Filtrer les valeurs undefined
+const filters: ProjectFilters = {
+  ...(req.query.featured === 'true' && { featured: true })
+};
+
+// ✅ Alternative - Type assertion
+const filters = {
+  featured: req.query.featured === 'true' ? true : undefined
+} as ProjectFilters;
+```
+
+### 8. Erreurs de paramètres optionnels (TS2345)
+
+**Problème :** `Argument of type 'string | undefined' is not assignable to parameter of type 'string'.`
+
+**Solutions :**
+```typescript
+// ❌ Incorrect
+const project = await ProjectService.getProjectById(id, userId);
+
+// ✅ Correct - Vérification de type
+if (!userId) {
+  return res.status(401).json({ error: 'User ID required' });
+}
+const project = await ProjectService.getProjectById(id, userId);
+
+// ✅ Alternative - Type assertion (si sûr)
+const project = await ProjectService.getProjectById(id, userId!);
+```
+
 ## 🔧 Configuration TypeScript Strict
 
 ### tsconfig.json Recommandé
@@ -133,6 +199,11 @@ keyGenerator: (req) => {
 - Vérifier la documentation des bibliothèques
 - Tester les types avec `typeof` et `instanceof`
 
+### 5. Query Parameters
+- Utiliser la notation bracket pour les propriétés d'index
+- Filtrer les valeurs undefined avant de les passer aux services
+- Valider les types avant utilisation
+
 ## 📋 Checklist de Vérification
 
 Avant de commiter :
@@ -142,9 +213,12 @@ Avant de commiter :
 - [ ] Tous les paramètres sont utilisés ou préfixés avec `_`
 - [ ] Tous les chemins de retour sont corrects
 - [ ] Les types correspondent aux propriétés réelles
+- [ ] Les query parameters sont correctement typés
+- [ ] Les valeurs optionnelles sont gérées
 
 ## 🔗 Ressources
 
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - [Express Rate Limit Documentation](https://express-rate-limit.github.io/)
 - [Express Validator Documentation](https://express-validator.github.io/)
+- [TypeScript Strict Mode](https://www.typescriptlang.org/tsconfig#strict)

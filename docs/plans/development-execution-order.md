@@ -33,8 +33,8 @@
 ### 🔄 PHASE 2 - EN COURS
 - BE — Phase 2 (en cours)
   - ÉTAPE 2.1 : Services et logique métier ✅
-  - ÉTAPE 2.2 : Controllers et routes (prochaine étape)
-  - ÉTAPE 2.3 : Middleware et gestion d'erreurs
+  - ÉTAPE 2.2 : Controllers et routes ✅
+  - ÉTAPE 2.3 : Middleware et gestion d'erreurs (prochaine étape)
   - ÉTAPE 2.4 : Configuration Docker et Nginx
 
 - FE — Phase 2
