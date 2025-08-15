@@ -9,6 +9,11 @@ import { generalLimiter } from './middleware/rateLimit';
 import { sanitizeInput } from './middleware/validation';
 import { errorHandler, notFoundHandler, methodNotAllowedHandler } from './middleware/errorHandler';
 
+// Import des routes
+import authRoutes from './routes/auth';
+import projectRoutes from './routes/projects';
+import skillRoutes from './routes/skills';
+
 // Charger les variables d'environnement
 dotenv.config();
 
@@ -72,19 +77,24 @@ app.get('/health', (_req, res) => {
   });
 });
 
-// Route pour les informations de sécurité (admin seulement)
-app.get('/security-info', (_req, res) => {
-  res.json({
-    security: {
-      rateLimiting: 'enabled',
-      cors: 'configured',
-      helmet: 'enabled',
-      validation: 'enabled',
-      sanitization: 'enabled'
-    },
-    timestamp: new Date().toISOString()
-  });
-});
+    // Route pour les informations de sécurité (admin seulement)
+    app.get('/security-info', (_req, res) => {
+      res.json({
+        security: {
+          rateLimiting: 'enabled',
+          cors: 'configured',
+          helmet: 'enabled',
+          validation: 'enabled',
+          sanitization: 'enabled'
+        },
+        timestamp: new Date().toISOString()
+      });
+    });
+
+    // Routes API
+    app.use('/api/auth', authRoutes);
+    app.use('/api/projects', projectRoutes);
+    app.use('/api/skills', skillRoutes);
 
 // Gestion des routes non trouvées
 app.use('*', notFoundHandler);
