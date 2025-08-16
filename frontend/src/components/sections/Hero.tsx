@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 
 const Hero = () => {
@@ -23,7 +22,7 @@ const Hero = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
@@ -33,7 +32,7 @@ const Hero = () => {
       scale: 1.05,
       transition: {
         duration: 0.2,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     },
     tap: {
@@ -152,7 +151,7 @@ const Hero = () => {
             >
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">3+</div>
-                <div className="text-sm text-gray-400">Années d'expérience</div>
+                <div className="text-sm text-gray-400">Années d&apos;expérience</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">15+</div>
@@ -160,7 +159,7 @@ const Hero = () => {
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">4</div>
-                <div className="text-sm text-gray-400">Domaines d'expertise</div>
+                <div className="text-sm text-gray-400">Domaines d&apos;expertise</div>
               </div>
             </motion.div>
           </motion.div>
