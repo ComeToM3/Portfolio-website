@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Smartphone } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -81,6 +82,21 @@ const Header = () => {
                 </ScrollLink>
               </motion.div>
             ))}
+            
+            {/* Lien vers l'app mobile */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            >
+              <Link
+                href="/app-mobile"
+                className="inline-flex items-center text-white hover:text-blue-400 transition-colors cursor-pointer font-medium"
+              >
+                <Smartphone className="w-4 h-4 mr-1" />
+                App Mobile
+              </Link>
+            </motion.div>
           </nav>
 
           {/* Bouton Menu Mobile */}
@@ -129,6 +145,22 @@ const Header = () => {
                   </ScrollLink>
                 </motion.div>
               ))}
+              
+              {/* Lien vers l'app mobile dans le menu mobile */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0.6 }}
+              >
+                <Link
+                  href="/app-mobile"
+                  className="flex items-center text-white hover:text-blue-400 transition-colors cursor-pointer font-medium py-2"
+                  onClick={handleNavClick}
+                >
+                  <Smartphone className="w-4 h-4 mr-2" />
+                  App Mobile
+                </Link>
+              </motion.div>
             </nav>
           </motion.div>
         )}

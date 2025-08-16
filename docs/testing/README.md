@@ -37,7 +37,7 @@ Ce dossier contient toutes les spécifications et stratégies de tests pour le p
 ### Tests d'Intégration
 - **API** : Endpoints et workflows
 - **Base de données** : Requêtes et transactions
-- **Services externes** : LinkedIn API, email
+- **Services externes** :  API, email
 
 ### Tests de Performance
 - **Frontend** : Lighthouse, Core Web Vitals

@@ -112,9 +112,9 @@ const Contact = () => {
       color: 'hover:text-gray-400'
     },
     {
-      name: 'LinkedIn',
+      name: '',
       icon: '💼',
-      url: 'https://linkedin.com/in/johan-dominguez',
+      url: 'https://.com/in/johan-dominguez',
       color: 'hover:text-blue-400'
     },
     {

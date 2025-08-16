@@ -273,7 +273,7 @@ http_request_duration_seconds_bucket{method="GET",endpoint="/api/users",le="0.1"
   "data": [
     {
       "id": "proj_123",
-      "title": "Todo AI App",
+      "title": "Portfolio Hordearii",
       "description": "Application mobile avec IA",
       "category": "mobile",
       "technologies": ["Flutter", "Dart", "TensorFlow"],

@@ -6,7 +6,7 @@
 
 ### **Objectifs :**
 - ✅ **Portfolio professionnel** moderne avec stack technique avancée
-- ✅ **Reprise des éléments LinkedIn** pour édition et mise à jour facile
+- ✅ **Reprise des éléments ** pour édition et mise à jour facile
 - ✅ **Section applications** avec pages descriptives
 - ✅ **Présentation de vos compétences** tech et soft skills
 - ✅ **Design épuré** mais impactant avec Tailwind CSS
@@ -89,20 +89,20 @@ type(scope): description courte
 - **Flexibilité** : Personnalisation complète de l'environnement
 
 ---
-## 📋 GESTION DU CONTENU LINKEDIN
+## 📋 GESTION DU CONTENU 
 
-### **1. Synchronisation LinkedIn :**
-- **Profil LinkedIn** : Source de vérité pour le contenu
+### **1. Synchronisation  :**
+- **Profil ** : Source de vérité pour le contenu
 - **Mise à jour automatique** : Synchronisation périodique
 - **Édition facile** : Interface d'administration pour modifier le contenu
 - **Versioning** : Historique des modifications
 
-### **2. Éléments repris de LinkedIn :**
+### **2. Éléments repris de  :**
 - **Informations personnelles** : Nom, titre, localisation
 - **Expérience professionnelle** : Postes, entreprises, descriptions
 - **Formation** : Diplômes, certifications, institutions
 - **Compétences** : Skills validés et endorsements
-- **Publications** : Articles et posts LinkedIn
+- **Publications** : Articles et posts 
 - **Recommandations** : Témoignages et références
 - **Projets** : Réalisations documentées
 
@@ -110,7 +110,7 @@ type(scope): description courte
 - **Dashboard admin** : Gestion du contenu
 - **Édition en temps réel** : Modification directe
 - **Prévisualisation** : Aperçu des changements
-- **Synchronisation** : Mise à jour depuis LinkedIn
+- **Synchronisation** : Mise à jour depuis 
 - **Backup** : Sauvegarde du contenu
 
 ---
@@ -143,7 +143,7 @@ hordearii-website/
 │   │   │   ├── profile/page.tsx
 │   │   │   ├── skills/page.tsx
 │   │   │   └── projects/page.tsx
-│   │   ├── todo-app/page.tsx
+│   │   ├── hordearii-app/page.tsx
 │   │   └── download/page.tsx
 │   ├── components/
 │   │   ├── ui/
@@ -160,7 +160,7 @@ hordearii-website/
 │   │   │   ├── ProfileEditor.tsx
 │   │   │   ├── SkillsEditor.tsx
 │   │   │   ├── ProjectsEditor.tsx
-│   │   │   └── LinkedInSync.tsx
+│   │   │   └── Sync.tsx
 │   │   └── layout/
 │   │       ├── Header.tsx
 │   │       └── Footer.tsx
@@ -171,7 +171,7 @@ hordearii-website/
 │   │   │   ├── client.ts
 │   │   │   ├── auth.ts
 │   │   │   └── projects.ts
-│   │   ├── linkedin/
+│   │   ├── /
 │   │   │   ├── sync.ts
 │   │   │   ├── profile.ts
 │   │   │   └── skills.ts
@@ -247,7 +247,7 @@ hordearii-website/
 **Contenu :**
 - Logo et nom du site
 - Liens : À propos, Compétences, Projets, Contact
-- Bouton CTA pour Todo AI App
+- Bouton CTA pour l'application mobile (Phase 2)
 - Menu hamburger animé pour mobile
 - Smooth scrolling avec react-scroll
 
@@ -312,7 +312,7 @@ hordearii-website/
 - Lazy loading des images
 
 **Contenu (projets professionnels) :**
-- Projet 1 : "Todo AI App" avec screenshot optimisé
+- Projet 1 : "Portfolio Hordearii" avec screenshot optimisé
 - Projet 2 : "Infrastructure Web" avec image
 - Technologies : Tags colorés pour chaque tech
 - Actions : "En savoir plus" et "Télécharger"
@@ -331,7 +331,7 @@ hordearii-website/
 - Email : johan_dominguez@hotmail.com
 - Téléphone : (514) 777-1269
 - Localisation : Montréal, Québec, Canada
-- Liens sociaux : GitHub et LinkedIn
+- Liens sociaux : GitHub et 
 - Icônes emoji pour chaque élément
 - Informations de contact professionnelles
 
@@ -798,12 +798,12 @@ Checklist rapide:
 Objectif: mesurer la visibilité et l’engagement sans alourdir le site ni violer la vie privée.
 
 ### 1) Web analytics (comportement utilisateur)
-- Option 1 (hébergé): **Google Analytics 4** (pageviews, events CTA, sorties vers GitHub/LinkedIn)
+- Option 1 (hébergé): **Google Analytics 4** (pageviews, events CTA, sorties vers GitHub/)
 - Option 2 (self‑hosted): **Matomo** ou **Umami/Plausible (self‑hosted)** pour respect vie privée
 
 Implémentation (recommandé minimal):
 - Pageviews automatiques + events:
-  - CTA “Télécharger l’app”, “Voir GitHub/LinkedIn”, “Contact”
+  - CTA “Télécharger l’app”, “Voir GitHub/”, “Contact”
   - Scroll depth sur la page d’accueil
 - Anonymisation IP + consentement cookies (bannière) si GA4/Hotjar
 
@@ -811,7 +811,7 @@ Implémentation (recommandé minimal):
 - **Hotjar** (hébergé) pour heatmaps et feedback widgets
 - Alternative self‑hosted: **PostHog**
 
-Usage: activer sur 1-2 pages clés (Home, Todo AI App) pour limiter le poids
+Usage: activer sur 1-2 pages clés (Home, Application Mobile) pour limiter le poids
 
 ### 3) Error tracking
 - **Sentry** (frontend + backend) pour erreurs en production
@@ -832,7 +832,7 @@ Usage: activer sur 1-2 pages clés (Home, Todo AI App) pour limiter le poids
 
 KPI essentiels pour un site de profil:
 - Visites uniques, pays, source de trafic
-- Click‑through sur “Télécharger”, “GitHub”, “LinkedIn”, “Contact”
+- Click‑through sur “Télécharger”, “GitHub”, “”, “Contact”
 - Temps sur page / scroll depth (hero → projects → contact)
 - Erreurs JS et 5xx, disponibilité (SLA personnel ≥ 99.5%)
 
@@ -849,7 +849,7 @@ Un site web moderne, responsive et professionnel qui :
 
 **Contenu optimisé :**
 - Présentation claire de votre profil
-- Mise en avant de vos projets (Todo AI App)
+- Mise en avant de vos projets (Portfolio Hordearii)
 - Démonstration visuelle de vos compétences
 - Informations de contact facilement accessibles
 

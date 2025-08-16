@@ -138,7 +138,7 @@ git commit -m "feat: Implémentation du layout principal et navigation
 **Objectifs :**
 - Créer une section hero impactante avec Next.js
 - Implémenter le layout grid responsive avec Tailwind
-- Ajouter la typographie et le contenu repris de LinkedIn
+- Ajouter la typographie et le contenu repris de 
 - Créer les boutons d'action avec animations
 
 **Tâches :**
@@ -169,7 +169,7 @@ git commit -m "feat: Implémentation de la section Hero
 - Créer une section à propos engageante
 - Implémenter les highlight cards avec Tailwind
 - Ajouter les icônes et animations Framer Motion
-- Intégrer le contenu LinkedIn (expérience, formation)
+- Intégrer le contenu  (expérience, formation)
 
 **Tâches :**
 - Créer `src/components/sections/About.tsx`
@@ -198,7 +198,7 @@ git commit -m "feat: Implémentation de la section About
 - Créer une section compétences visuelle
 - Implémenter les skill bars animées avec Framer Motion
 - Organiser par catégories avec Tailwind Grid
-- Intégrer les compétences LinkedIn validées
+- Intégrer les compétences  validées
 
 **Tâches :**
 - Créer `src/components/sections/Skills.tsx`
@@ -227,14 +227,14 @@ git commit -m "feat: Implémentation de la section Skills
 - Créer une grille de projets attrayante
 - Implémenter les project cards avec Tailwind
 - Ajouter les images optimisées avec Next.js Image
-- Intégrer les projets LinkedIn (Todo AI App, etc.)
+- Intégrer les projets  (Portfolio Hordearii, Infrastructure Web, etc.)
 
 **Tâches :**
 - Créer `src/components/sections/Projects.tsx`
 - Implémenter la grille responsive avec Tailwind Grid
 - Ajouter les images de projets avec Next.js Image
 - Créer les tags technologiques avec Tailwind badges
-- Intégrer les projets professionnels (Todo AI App, Infrastructure Web)
+- Intégrer les projets professionnels (Portfolio Hordearii, Infrastructure Web)
 - Implémenter les boutons d'action
 - Ajouter les effets hover avec Framer Motion
 
@@ -254,7 +254,7 @@ git commit -m "feat: Implémentation de la section Projects
 #### **ÉTAPE 2.5 : Contact Section et Footer (Jour 4 - Après-midi)**
 **Objectifs :**
 - Créer une section contact claire
-- Implémenter les informations de contact LinkedIn
+- Implémenter les informations de contact 
 - Ajouter les liens sociaux avec hover effects
 - Créer un footer professionnel
 
@@ -262,8 +262,8 @@ git commit -m "feat: Implémentation de la section Projects
 - Créer `src/components/sections/Contact.tsx`
 - Implémenter la structure des informations de contact
 - Ajouter les icônes emoji pour chaque élément
-- Intégrer les informations LinkedIn (email, téléphone, localisation)
-- Créer les liens sociaux (GitHub, LinkedIn)
+- Intégrer les informations  (email, téléphone, localisation)
+- Créer les liens sociaux (GitHub, )
 - Créer `src/components/layout/Footer.tsx`
 - Styliser avec Tailwind
 - Optimiser pour l'accessibilité
@@ -276,7 +276,7 @@ git commit -m "feat: Implémentation Contact et Footer
 - Création de la section Contact avec informations claires
 - Structure des informations de contact professionnelles
 - Icônes emoji pour chaque type de contact
-- Liens vers profils sociaux (GitHub, LinkedIn)
+- Liens vers profils sociaux (GitHub, )
 - Footer professionnel avec branding Hordearii
 - Optimisation pour l'accessibilité
 - Design épuré avec Tailwind CSS"
@@ -287,13 +287,13 @@ git commit -m "feat: Implémentation Contact et Footer
 
 #### **ÉTAPE 3.1 : Pages Additionnelles (Jour 5 - Matin)**
 **Objectifs :**
-- Créer la page descriptive Todo AI App
+- Créer la page descriptive de l'application mobile (Phase 2)
 - Implémenter la page de téléchargement
 - Optimiser la navigation entre pages
 - Ajouter le SEO avec Next.js
 
 **Tâches :**
-- Créer `src/app/todo-app/page.tsx` avec contenu détaillé
+- Créer `src/app/app-mobile/page.tsx` avec contenu détaillé
 - Créer `src/app/download/page.tsx` avec lien de téléchargement
 - Implémenter la navigation entre pages
 - Ajouter les meta tags SEO avec Next.js
@@ -305,7 +305,7 @@ git commit -m "feat: Implémentation Contact et Footer
 git add .
 git commit -m "feat: Création des pages additionnelles
 
-- Page descriptive Todo AI App avec contenu détaillé
+- Page descriptive de l'application mobile (Phase 2) avec contenu détaillé
 - Page de téléchargement avec lien direct
 - Navigation fluide entre toutes les pages
 - Optimisation SEO avec meta tags Next.js
@@ -313,7 +313,7 @@ git commit -m "feat: Création des pages additionnelles
 - Tests de navigation et liens"
 ```
 
-#### **ÉTAPE 3.2 : Interface d'Administration LinkedIn (Jour 5 - Après-midi)**
+#### **ÉTAPE 3.2 : Interface d'Administration  (Jour 5 - Après-midi)**
 **Objectifs :**
 - Créer l'interface d'administration pour le contenu
 - Implémenter la gestion de contenu autonome
@@ -329,9 +329,9 @@ git commit -m "feat: Création des pages additionnelles
 - Tester l'interface d'administration
 
 ```bash
-# Commit - Interface d'administration LinkedIn
+# Commit - Interface d'administration 
 git add .
-git commit -m "feat: Implémentation de l'interface d'administration LinkedIn
+git commit -m "feat: Implémentation de l'interface d'administration 
 
 - Création de l'interface d'administration pour le contenu
 - Gestion de contenu autonome et professionnelle

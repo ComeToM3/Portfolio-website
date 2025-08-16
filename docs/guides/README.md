@@ -27,11 +27,11 @@ Ce dossier contient tous les guides détaillés pour le développement du projet
 - Optimisations de performance
 
 ### 👤 [profile-management-guide.md](./profile-management-guide.md)
-**Guide de gestion des profils** - Guide pour la gestion des profils utilisateurs et la synchronisation LinkedIn.
+**Guide de gestion des profils** - Guide pour la gestion des profils utilisateurs et la synchronisation .
 
 **Contenu :**
 - Gestion des profils utilisateurs
-- Synchronisation avec LinkedIn
+- Synchronisation avec 
 - Interface d'administration
 - Gestion des permissions
 - Workflows de validation

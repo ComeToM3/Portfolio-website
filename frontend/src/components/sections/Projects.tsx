@@ -27,12 +27,12 @@ const Projects = () => {
   const defaultProjects: Project[] = [
     {
       id: '1',
-      title: 'Todo AI App - Flutter',
+      title: 'Hordearii App - Flutter (Phase 2)',
       description: 'Application mobile complète développée avec collaboration IA en 2 jours. Architecture moderne : Riverpod, Isar DB, TensorFlow Lite, FLChart. Classification IA, coaching comportemental, tests complets.',
       category: 'Mobile',
       technologies: ['Flutter', 'Dart', 'Riverpod', 'Isar DB', 'TensorFlow Lite'],
       featured: true,
-      githubUrl: 'https://github.com/ComeToM3/todo-ai-app',
+      githubUrl: 'https://github.com/ComeToM3/hordearii-app',
       liveUrl: 'https://hordearii.ca/apps'
     },
     {

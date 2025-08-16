@@ -6,7 +6,7 @@
 Créer un portfolio professionnel moderne et performant qui démontre vos compétences techniques et votre profil unique, avec une section dédiée aux applications.
 
 ### **Points Clés**
-- Portfolio synchronisé avec LinkedIn
+- Portfolio synchronisé avec 
 - Architecture moderne et performante
 - Hébergement sur infrastructure personnelle (HiveOS)
 - Gestion Git professionnelle
@@ -33,7 +33,7 @@ Frontend (Next.js 14)
 │   │   └── Blog technique
 │   └── Interface admin
 │       ├── Gestion du contenu
-│       ├── Synchronisation LinkedIn
+│       ├── Synchronisation 
 │       └── Analytics
 ├── PWA
 │   ├── Installation mobile
@@ -51,7 +51,7 @@ Backend (Express.js)
 ├── API RESTful
 │   ├── Authentification
 │   ├── Gestion contenu
-│   ├── Synchronisation LinkedIn
+│   ├── Synchronisation 
 │   └── Analytics
 ├── Base de données
 │   ├── PostgreSQL (Prisma ORM)
@@ -132,7 +132,7 @@ Infrastructure
 ### **2. Administration**
 - **Dashboard** : Vue d'ensemble
 - **Gestion Contenu** : Interface d'édition
-- **Sync LinkedIn** : Synchronisation automatique
+- **Sync ** : Synchronisation automatique
 - **Analytics** : Métriques et statistiques
 - **Monitoring** : Performance et erreurs
 
@@ -250,39 +250,39 @@ main (production)
 
 #### **Phase 1.2 : SECTIONS PRINCIPALES (Jours 2-4)**
 - **Jour 2 - Après-midi** : Hero Section
-  - Section hero impactante avec contenu LinkedIn
+  - Section hero impactante avec contenu 
   - Layout grid responsive avec Tailwind
   - Animations Framer Motion
 
 - **Jour 3 - Matin** : About Section
   - Section à propos avec highlight cards
-  - Intégration expérience LinkedIn (musicien, athlète, pâtissier)
+  - Intégration expérience  (musicien, athlète, pâtissier)
   - Animations au scroll
 
 - **Jour 3 - Après-midi** : Skills Section
   - Barres de progression animées
-  - Compétences LinkedIn validées
+  - Compétences  validées
   - Organisation par catégories
 
 - **Jour 4 - Matin** : Projects Section
   - Grille de projets responsive
   - Images optimisées avec Next.js Image
-  - Projets LinkedIn (Todo AI App, Infrastructure Web)
+  - Projets  (Portfolio Hordearii, Infrastructure Web)
 
 - **Jour 4 - Après-midi** : Contact Section et Footer
-  - Informations de contact LinkedIn
-  - Liens sociaux (GitHub, LinkedIn)
+  - Informations de contact 
+  - Liens sociaux (GitHub, )
   - Footer professionnel
 
 #### **Phase 1.3 : FONCTIONNALITÉS AVANCÉES (Jours 5-6)**
 - **Jour 5 - Matin** : Pages Additionnelles
-  - Page descriptive Todo AI App
+  - Page descriptive de l'application mobile (Phase 2)
   - Page de téléchargement
   - Navigation et SEO
 
-- **Jour 5 - Après-midi** : Interface d'Administration LinkedIn
+- **Jour 5 - Après-midi** : Interface d'Administration 
   - Interface d'administration pour le contenu
-  - Synchronisation avec l'API LinkedIn
+  - Synchronisation avec l'API 
   - Système de versioning
 
 - **Jour 6 - Matin** : Configuration PWA
@@ -754,7 +754,7 @@ Ce projet démontre une approche professionnelle du développement web moderne a
 ### **Guides (Vision, Architecture, Design, Sécurité, Déploiement)**
 - `FRONTEND_DEV_GUIDE.md` - Guide complet du développement frontend
 - `BACKEND_DEV_GUIDE.md` - Guide complet du développement backend
-- `PROFILE_GUIDE.md` - Guide du profil professionnel (LinkedIn, CV, interviews)
+- `PROFILE_GUIDE.md` - Guide du profil professionnel (, CV, interviews)
 - `GUIDE_DEPLOIEMENT_HIVEOS.md` - Guide spécifique au déploiement HiveOS
 
 ### **Plans (Exécution quotidienne, étapes, commandes)**

@@ -70,22 +70,22 @@ async function main() {
   // Créer des projets
   const projects = [
     {
-      title: 'Todo AI App',
-      description: 'Application de gestion de tâches avec intelligence artificielle pour optimiser la productivité.',
-      image: '/projects/todo-ai-app.jpg',
+      title: 'Portfolio Hordearii',
+      description: 'Site web portfolio professionnel moderne avec design responsive et animations fluides.',
+      image: '/projects/portfolio-hordearii.jpg',
       technologies: ['React', 'Node.js', 'OpenAI API', 'PostgreSQL'],
-      githubUrl: 'https://github.com/ComeToM3/todo-ai-app',
-      liveUrl: 'https://todo-ai-app.vercel.app',
+      githubUrl: 'https://github.com/ComeToM3/Portfolio-website',
+      liveUrl: 'https://hordearii.ca',
       featured: true,
       order: 1,
     },
     {
-      title: 'Portfolio Hordearii',
-      description: 'Portfolio professionnel moderne avec design responsive et animations fluides.',
-      image: '/projects/portfolio-hordearii.jpg',
-      technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-      githubUrl: 'https://github.com/ComeToM3/Portfolio-website',
-      liveUrl: 'https://hordearii.ca',
+      title: 'Hordearii App (Phase 2)',
+      description: 'Application mobile Flutter avec intelligence artificielle pour optimiser la productivité. Disponible sur Google Play Store.',
+      image: '/projects/hordearii-app.jpg',
+      technologies: ['Flutter', 'Dart', 'TensorFlow Lite', 'Firebase'],
+      githubUrl: 'https://github.com/ComeToM3/hordearii-app',
+      liveUrl: 'https://play.google.com/store/apps/details?id=com.hordearii.app',
       featured: true,
       order: 2,
     },
@@ -128,7 +128,7 @@ async function main() {
     {
       name: 'Jane Smith',
       email: 'jane.smith@company.com',
-      message: 'Salut ! Votre projet Todo AI App est vraiment intéressant. Avez-vous de l\'expérience avec d\'autres frameworks ?',
+      message: 'Salut ! Votre portfolio Hordearii est vraiment impressionnant. Avez-vous de l\'expérience avec d\'autres frameworks ?',
     },
   ];
 
@@ -146,7 +146,8 @@ async function main() {
 main()
   .catch((e) => {
     console.error('❌ Error during seeding:', e);
-    process.exit(1);
+    // Exit with error code
+    throw e;
   })
   .finally(async () => {
     await prisma.$disconnect();

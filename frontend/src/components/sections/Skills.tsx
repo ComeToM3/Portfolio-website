@@ -249,7 +249,7 @@ const Skills = () => {
             className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8 backdrop-blur-sm"
           >
             <h3 className="text-2xl font-bold text-white mb-4">
-              Approche d'Apprentissage
+              Approche d&apos;Apprentissage
             </h3>
                             <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
                   Je privilégie l&apos;apprentissage continu et l&apos;expérimentation pratique.

@@ -3,27 +3,27 @@
 ## 🎯 PHASE 1 : IDENTITÉ PROFESSIONNELLE DE BASE
 
 ### ÉTAPE 1 : Photo de profil professionnelle
-**Pour LinkedIn, CV, Portfolio :**
+**Pour , CV, Portfolio :**
 - **Style** : Visage bien éclairé, sourire naturel et approchable
 - **Arrière-plan** : Neutre ou setup tech modeste mais organisé
 - **Format** : Carré, minimum 400x400px
 - **Tonalité** : Professionnel mais accessible, reflète votre personnalité
 
 ### ÉTAPE 2 : Image de couverture/Header
-**Pour LinkedIn, Portfolio hordearii.ca :**
+**Pour , Portfolio hordearii.ca :**
 - **Collage** : Code + Éléments de réparation + Livres d'apprentissage + Montréal
 - **Ou setup bureau** : Ordinateur + outils de réparation + notes d'étude
 - **Ou skyline Montréal** : Avec overlay tech modeste mais prometteur
 - **Message** : Raconte votre histoire tech + résilience + innovation
 
 ### ÉTAPE 3 : Titre professionnel (Headline)
-**Pour LinkedIn, CV, Portfolio :**
+**Pour , CV, Portfolio :**
 ```
 Développeur Junior Full-Stack en Formation | HTML•CSS•JS•SQL•Flutter•Express | Kinésiologue•Musicien•Athlète → Approche Créative & Résolution Problèmes | Montréal 🍁
 ```
 
 ### ÉTAPE 4 : Informations de base
-**Pour LinkedIn, CV, Portfolio :**
+**Pour , CV, Portfolio :**
 - **Localisation** : `Grand Montréal, Québec, Canada`
 - **Secteur** : `Services informatiques et technologie de l'information`
 - **Coordonnées** : Email professionnel + GitHub + Portfolio hordearii.ca
@@ -33,7 +33,7 @@ Développeur Junior Full-Stack en Formation | HTML•CSS•JS•SQL•Flutter•
 ## 🎯 PHASE 2 : RÉSUMÉ PROFESSIONNEL COMPLET
 
 ### ÉTAPE 5 : Résumé professionnel - Votre histoire authentique
-**Pour LinkedIn, CV, Portfolio, Entretiens :**
+**Pour , CV, Portfolio, Entretiens :**
 
 ```
 🚀 JUNIOR TECH UNIQUE : Quand la créativité rencontre l'apprentissage technique
@@ -55,7 +55,7 @@ Formation AEC Développement Web + 15 ans de musique + compétition athlétique 
 • Backend : Node.js, Express.js, architecture API RESTful (en développement)
 • Bases de données : SQL, NoSQL, optimisation requêtes (formation continue)
 • **Flutter/Dart mobile natif** : Application complète développée en 2 jours avec IA
-• **Architecture moderne** : Riverpod, Isar, TensorFlow Lite, FLChart (projet Todo AI App)
+• **Architecture moderne** : Riverpod, Isar, TensorFlow Lite, FLChart (projet Hordearii App - Phase 2)
 
 **Infrastructure & Hardware (Compétences pratiques) :**
 • Assembly PC, diagnostics composants, optimisation (expérience personnelle)
@@ -152,7 +152,7 @@ Formation AEC Développement Web + 15 ans de musique + compétition athlétique 
 🌐 **Portfolio en ligne** : hordearii.ca (en cours de développement)
 ```
 
-**Paramètres LinkedIn :**
+**Paramètres  :**
 - **Mode recruteur** : "Ouvert aux opportunités d'emploi"
 - **Paramètres recruteur** : Support technique, Développement junior, IT durable
 
@@ -202,7 +202,7 @@ APPRENTISSAGE MÉTHODOLOGIQUE :
 
 📊 RÉSULTATS APPRENTISSAGE :
 • Formation AEC complétée avec succès
-• Projet Todo AI App fonctionnel et prêt pour production
+• Projet Hordearii App (Phase 2) fonctionnel et prêt pour production
 • Maîtrise rapide de nouvelles technologies (Flutter, Riverpod, Isar)
 • Capacité de développement d'applications complètes en peu de temps
 
@@ -415,7 +415,7 @@ LEADERSHIP D'ÉQUIPE (Musique + Projets collaboratifs) :
 - `CI/CD Pipeline` - Intermédiaire (GitHub Actions, déploiement automatisé)
 - `Versioning` - Intermédiaire (Semantic versioning, releases marquées)
 
-**Développement Mobile Flutter (Projet Todo AI App)** :
+**Développement Mobile Flutter (Projet Hordearii App - Phase 2)** :
 - `Riverpod (State Management)` - Intermédiaire
 - `Isar Database` - Intermédiaire
 - `TensorFlow Lite` - Débutant
@@ -610,7 +610,7 @@ Avec ce profil professionnel authentique, vous ne serez plus "juste un junior" -
 ## 🎯 PLAN D'ACTION PROFESSIONNEL
 
 ### **1. Création de l'identité professionnelle**
-- **LinkedIn** : Suivre toutes les étapes du guide
+- **** : Suivre toutes les étapes du guide
 - **CV** : Adapter le contenu selon les postes
 - **Portfolio** : Finaliser hordearii.ca avec section applications
 - **Photos** : Professionnelles et cohérentes
@@ -624,7 +624,7 @@ Avec ce profil professionnel authentique, vous ne serez plus "juste un junior" -
 ### **3. Réseautage et visibilité**
 - **Meetups tech Montréal** : Participation active
 - **Communautés dev** : Forums, événements
-- **Recruteurs tech** : Connexions LinkedIn ciblées
+- **Recruteurs tech** : Connexions  ciblées
 - **Partage de contenu** : Apprentissages, projets
 
 ### **4. Candidatures stratégiques**
