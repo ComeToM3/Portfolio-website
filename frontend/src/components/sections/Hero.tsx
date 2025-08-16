@@ -87,7 +87,7 @@ const Hero = () => {
               variants={itemVariants}
             >
               <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
-              Disponible pour de nouvelles opportunités
+              Junior Tech Unique - Soft Skills Exceptionnelles
             </motion.div>
 
             <motion.h1
@@ -104,7 +104,9 @@ const Hero = () => {
               className="text-xl sm:text-2xl text-gray-300 mb-8 leading-relaxed"
               variants={itemVariants}
             >
-              Développeur Full Stack passionné, Musicien créatif, Athlète déterminé et Pâtissier artistique
+              Développeur Junior Full-Stack en Formation | HTML•CSS•JS•SQL•Flutter•Express | 
+              <br className="hidden sm:block" />
+              Kinésiologue•Musicien•Athlète → Approche Créative & Résolution Problèmes
             </motion.p>
 
             <motion.div
@@ -150,12 +152,12 @@ const Hero = () => {
               variants={itemVariants}
             >
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">3+</div>
-                <div className="text-sm text-gray-400">Années d&apos;expérience</div>
+                <div className="text-2xl font-bold text-white">15+</div>
+                <div className="text-sm text-gray-400">Années musique</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">15+</div>
-                <div className="text-sm text-gray-400">Projets réalisés</div>
+                <div className="text-2xl font-bold text-white">1350</div>
+                <div className="text-sm text-gray-400">ELO échecs</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">4</div>

@@ -27,60 +27,61 @@ const Projects = () => {
   const defaultProjects: Project[] = [
     {
       id: '1',
-      title: 'Portfolio Hordearii',
-      description: 'Portfolio professionnel moderne avec Next.js, TypeScript et Tailwind CSS. Design responsive avec animations Framer Motion.',
-      category: 'Web',
-      technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+      title: 'Todo AI App - Flutter',
+      description: 'Application mobile complète développée avec collaboration IA en 2 jours. Architecture moderne : Riverpod, Isar DB, TensorFlow Lite, FLChart. Classification IA, coaching comportemental, tests complets.',
+      category: 'Mobile',
+      technologies: ['Flutter', 'Dart', 'Riverpod', 'Isar DB', 'TensorFlow Lite'],
+      featured: true,
+      githubUrl: 'https://github.com/ComeToM3/todo-ai-app',
+      liveUrl: 'https://hordearii.ca/apps'
+    },
+    {
+      id: '2',
+      title: 'Infrastructure Web Durable',
+      description: 'Hébergement web sur rig mining HiveOS Standard avec Docker. Configuration serveur, site portfolio, pages applications. Approche durable : utilisation rig en été pour hébergement web.',
+      category: 'Backend',
+      technologies: ['Docker', 'HiveOS', 'Nginx', 'Linux', 'CI/CD'],
       featured: true,
       githubUrl: 'https://github.com/ComeToM3/Portfolio-website',
       liveUrl: 'https://hordearii.ca'
     },
     {
-      id: '2',
-      title: 'Application Mobile Flutter',
-      description: 'Application mobile cross-platform développée avec Flutter et Dart. Interface utilisateur moderne et performances optimisées.',
-      category: 'Mobile',
-      technologies: ['Flutter', 'Dart', 'Firebase', 'Provider'],
-      featured: true,
-      githubUrl: 'https://github.com/ComeToM3/flutter-app',
-      liveUrl: 'https://play.google.com/store/apps/details?id=com.hordearii.app'
-    },
-    {
       id: '3',
-      title: 'API REST Node.js',
-      description: 'API REST complète avec Express.js, PostgreSQL et Prisma. Authentification JWT et documentation Swagger.',
-      category: 'Backend',
-      technologies: ['Node.js', 'Express.js', 'PostgreSQL', 'Prisma', 'JWT'],
+      title: 'Portfolio Web Professionnel',
+      description: 'Portfolio moderne avec Next.js, TypeScript, Tailwind CSS. Gestion Git professionnelle avec convention de commits, semantic versioning, CI/CD pipeline. Historique de développement structuré.',
+      category: 'Web',
+      technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Git', 'CI/CD'],
       featured: true,
-      githubUrl: 'https://github.com/ComeToM3/api-backend',
-      liveUrl: 'https://api.hordearii.ca'
+      githubUrl: 'https://github.com/ComeToM3/Portfolio-website',
+      liveUrl: 'https://hordearii.ca'
     },
     {
       id: '4',
-      title: 'Dashboard Analytics',
-      description: 'Dashboard d\'analytics en temps réel avec React et Chart.js. Visualisation de données et rapports interactifs.',
-      category: 'Web',
-      technologies: ['React', 'Chart.js', 'Socket.io', 'Node.js'],
+      title: 'API Backend Portfolio',
+      description: 'API REST complète avec Node.js, Express.js, PostgreSQL, Prisma. Authentification JWT, middleware de sécurité, tests unitaires. Architecture scalable et documentation complète.',
+      category: 'Backend',
+      technologies: ['Node.js', 'Express.js', 'PostgreSQL', 'Prisma', 'JWT'],
       featured: false,
-      githubUrl: 'https://github.com/ComeToM3/analytics-dashboard'
+      githubUrl: 'https://github.com/ComeToM3/Portfolio-website',
+      liveUrl: 'https://api.hordearii.ca'
     },
     {
       id: '5',
-      title: 'E-commerce Platform',
-      description: 'Plateforme e-commerce complète avec panier, paiements et gestion des commandes.',
-      category: 'Web',
-      technologies: ['Next.js', 'Stripe', 'PostgreSQL', 'Redis'],
+      title: 'Gestion Git Professionnelle',
+      description: 'Workflow Git enterprise avec convention de commits, feature branches, pull requests, semantic versioning. CI/CD pipeline GitHub Actions pour déploiement automatisé.',
+      category: 'Tools',
+      technologies: ['Git', 'GitHub Actions', 'CI/CD', 'Docker', 'Semantic Versioning'],
       featured: false,
-      githubUrl: 'https://github.com/ComeToM3/ecommerce-platform'
+      githubUrl: 'https://github.com/ComeToM3/Portfolio-website'
     },
     {
       id: '6',
-      title: 'App de Musique',
-      description: 'Application de streaming musical avec interface moderne et fonctionnalités avancées.',
-      category: 'Mobile',
-      technologies: ['React Native', 'Expo', 'Spotify API', 'Redux'],
+      title: 'Projets d\'Apprentissage',
+      description: 'Projets personnels divers : applications web, scripts d\'automatisation, expérimentations technologiques. Apprentissage continu et veille technologique active.',
+      category: 'Web',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'Flutter'],
       featured: false,
-      githubUrl: 'https://github.com/ComeToM3/music-app'
+      githubUrl: 'https://github.com/ComeToM3'
     }
   ];
 
@@ -195,13 +196,13 @@ const Projects = () => {
           >
             Mes Projets
           </motion.h2>
-          <motion.p
-            variants={itemVariants}
-            className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
-          >
-            Une sélection de mes projets les plus récents, démontrant mes compétences 
-            en développement web, mobile et backend.
-          </motion.p>
+                      <motion.p
+              variants={itemVariants}
+              className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            >
+              Une sélection de mes projets authentiques, démontrant mes compétences 
+              en développement junior et ma collaboration IA-Humain pour développement rapide.
+            </motion.p>
         </motion.div>
 
         {/* Category Filter */}
@@ -421,7 +422,7 @@ const Projects = () => {
             <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
               Chaque projet est une opportunité d&apos;innovation et d&apos;apprentissage. 
               Je privilégie le code propre, les performances optimales et l&apos;expérience 
-              utilisateur exceptionnelle.
+              utilisateur exceptionnelle. Collaboration IA-Humain pour développement rapide et efficace.
             </p>
           </motion.div>
         </motion.div>

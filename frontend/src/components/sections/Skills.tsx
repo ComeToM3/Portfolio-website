@@ -22,29 +22,30 @@ const Skills = () => {
   // Données de compétences par défaut (fallback)
   const defaultSkills: Skill[] = [
     // Frontend
-    { id: '1', name: 'React', category: 'Frontend', level: 90, icon: '⚛️' },
-    { id: '2', name: 'Next.js', category: 'Frontend', level: 85, icon: '▲' },
-    { id: '3', name: 'TypeScript', category: 'Frontend', level: 88, icon: '📘' },
-    { id: '4', name: 'Tailwind CSS', category: 'Frontend', level: 92, icon: '🎨' },
-    { id: '5', name: 'JavaScript', category: 'Frontend', level: 95, icon: '🟨' },
+    { id: '1', name: 'HTML5', category: 'Frontend', level: 85, icon: '🌐' },
+    { id: '2', name: 'CSS3', category: 'Frontend', level: 80, icon: '🎨' },
+    { id: '3', name: 'JavaScript', category: 'Frontend', level: 75, icon: '🟨' },
+    { id: '4', name: 'Responsive Design', category: 'Frontend', level: 80, icon: '📱' },
+    { id: '5', name: 'UX/UI', category: 'Frontend', level: 70, icon: '✨' },
     
     // Backend
-    { id: '6', name: 'Node.js', category: 'Backend', level: 85, icon: '🟢' },
-    { id: '7', name: 'Express.js', category: 'Backend', level: 80, icon: '🚂' },
-    { id: '8', name: 'PostgreSQL', category: 'Backend', level: 75, icon: '🐘' },
-    { id: '9', name: 'Prisma', category: 'Backend', level: 78, icon: '🔧' },
-    { id: '10', name: 'REST APIs', category: 'Backend', level: 88, icon: '🔗' },
+    { id: '6', name: 'Node.js', category: 'Backend', level: 75, icon: '🟢' },
+    { id: '7', name: 'Express.js', category: 'Backend', level: 70, icon: '🚂' },
+    { id: '8', name: 'SQL', category: 'Backend', level: 75, icon: '🗄️' },
+    { id: '9', name: 'NoSQL', category: 'Backend', level: 60, icon: '📊' },
+    { id: '10', name: 'REST APIs', category: 'Backend', level: 75, icon: '🔗' },
     
     // Mobile
-    { id: '11', name: 'Flutter', category: 'Mobile', level: 82, icon: '📱' },
-    { id: '12', name: 'Dart', category: 'Mobile', level: 80, icon: '🎯' },
-    { id: '13', name: 'React Native', category: 'Mobile', level: 75, icon: '📲' },
+    { id: '11', name: 'Flutter', category: 'Mobile', level: 80, icon: '📱' },
+    { id: '12', name: 'Dart', category: 'Mobile', level: 75, icon: '🎯' },
+    { id: '13', name: 'Riverpod', category: 'Mobile', level: 70, icon: '🔄' },
+    { id: '14', name: 'Isar DB', category: 'Mobile', level: 70, icon: '💾' },
     
     // Tools & Others
-    { id: '14', name: 'Git', category: 'Tools', level: 90, icon: '📝' },
-    { id: '15', name: 'Docker', category: 'Tools', level: 70, icon: '🐳' },
-    { id: '16', name: 'Figma', category: 'Tools', level: 75, icon: '🎨' },
-    { id: '17', name: 'AWS', category: 'Tools', level: 65, icon: '☁️' },
+    { id: '15', name: 'Git/GitHub', category: 'Tools', level: 90, icon: '📝' },
+    { id: '16', name: 'Docker', category: 'Tools', level: 70, icon: '🐳' },
+    { id: '17', name: 'CI/CD', category: 'Tools', level: 75, icon: '⚡' },
+    { id: '18', name: 'HiveOS', category: 'Tools', level: 80, icon: '🖥️' },
   ];
 
   useEffect(() => {
@@ -159,12 +160,13 @@ const Skills = () => {
           >
             Mes Compétences
           </motion.h2>
-          <motion.p
-            variants={itemVariants}
-            className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
-          >
-            Un éventail de technologies et d'outils que j'utilise pour créer des applications modernes et performantes.
-          </motion.p>
+                        <motion.p
+                variants={itemVariants}
+                className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              >
+                Stack technique en cours de maîtrise : Formation AEC Développement Web + projets personnels. 
+                Collaboration IA-Humain pour développement rapide et efficace.
+              </motion.p>
         </motion.div>
 
         {/* Category Filter */}
@@ -249,11 +251,11 @@ const Skills = () => {
             <h3 className="text-2xl font-bold text-white mb-4">
               Approche d'Apprentissage
             </h3>
-            <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
-              Je privilégie l'apprentissage continu et l'expérimentation pratique. 
-              Chaque projet est une opportunité d'approfondir mes compétences et 
-              d'explorer de nouvelles technologies.
-            </p>
+                            <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
+                  Je privilégie l&apos;apprentissage continu et l&apos;expérimentation pratique.
+                  Chaque projet est une opportunité d&apos;approfondir mes compétences et
+                  d&apos;explorer de nouvelles technologies. Collaboration IA-Humain pour développement rapide.
+                </p>
           </motion.div>
         </motion.div>
       </div>

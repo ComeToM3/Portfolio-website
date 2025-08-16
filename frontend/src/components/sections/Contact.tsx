@@ -160,8 +160,9 @@ const Contact = () => {
               variants={itemVariants}
               className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
             >
-              Prêt à collaborer sur votre prochain projet ? N&apos;hésitez pas à me contacter 
-              pour discuter de vos idées et voir comment nous pouvons travailler ensemble.
+              Prêt à collaborer avec un junior unique ? N&apos;hésitez pas à me contacter 
+              pour discuter de vos projets et voir comment mes soft skills exceptionnelles 
+              et ma collaboration IA-Humain peuvent contribuer à votre équipe.
             </motion.p>
           </motion.div>
 
@@ -351,9 +352,9 @@ const Contact = () => {
             <div className="col-span-1 md:col-span-2">
               <h3 className="text-2xl font-bold text-white mb-4">Hordearii</h3>
               <p className="text-gray-400 mb-6 max-w-md">
-                Développeur Full Stack passionné, créant des expériences numériques 
-                exceptionnelles avec une approche unique combinant créativité technique 
-                et discipline artistique.
+                Junior Tech Unique avec soft skills exceptionnelles, créant des expériences numériques 
+                exceptionnelles avec une approche unique combinant créativité technique, 
+                discipline artistique et collaboration IA-Humain.
               </p>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (

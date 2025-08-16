@@ -54,48 +54,60 @@ const About = () => {
   const highlights = [
     {
       icon: "💻",
-      title: "Développeur Full Stack",
-      description: "Passionné par les technologies web modernes, je crée des applications performantes et intuitives avec React, Node.js et Flutter.",
-      skills: ["React", "Node.js", "TypeScript", "Flutter"]
+      title: "Développeur Junior Full-Stack",
+      description: "Formation AEC Développement Web + projets personnels. Stack complète : HTML5, CSS3, JavaScript ES6+, Node.js, Express.js, Flutter/Dart. Collaboration IA-Humain pour développement rapide.",
+      skills: ["HTML5/CSS3", "JavaScript", "Node.js", "Flutter"]
     },
     {
       icon: "🎵",
-      title: "Musicien Créatif",
-      description: "Musicien multi-instrumentiste avec une passion pour la composition et l'arrangement. Expérience en production musicale et performance live.",
-      skills: ["Composition", "Production", "Performance", "Arrangement"]
+      title: "Musicien Professionnel (15+ ans)",
+      description: "Performance solo et en groupe, composition et arrangement. Enseignement musical et gestion de projets artistiques. Excellence sous pression et créativité sous contrainte.",
+      skills: ["Performance", "Composition", "Enseignement", "Leadership"]
     },
     {
       icon: "🏃",
-      title: "Athlète Déterminé",
-      description: "Sportif passionné avec une discipline de fer. L'athlétisme m'a enseigné la persévérance, la discipline et la gestion du stress.",
-      skills: ["Discipline", "Persévérance", "Gestion stress", "Objectifs"]
+      title: "Kinésiologue & Athlète",
+      description: "Baccalauréat en Kinésiologie (UQAM). Approche scientifique rigoureuse, accompagnement humain, méthodologie structurée. Discipline sportive et bien-être physique/mental.",
+      skills: ["Approche scientifique", "Accompagnement", "Méthodologie", "Discipline"]
     },
     {
       icon: "🍰",
-      title: "Pâtissier Artistique",
-      description: "Pâtissier créatif avec un œil pour le détail et l'esthétique. La pâtisserie m'a appris la précision et la créativité.",
-      skills: ["Créativité", "Précision", "Détail", "Art"]
+      title: "Pâtissier & Leadership",
+      description: "Diplôme professionnel en pâtisserie. Leadership improvisé et gestion de crise exceptionnelle. Formation d'équipes et optimisation workflows sous pression.",
+      skills: ["Leadership", "Gestion crise", "Formation", "Optimisation"]
     }
   ];
 
   const experiences = [
     {
-      year: "2023 - Présent",
-      title: "Développeur Full Stack Freelance",
-      company: "Hordearii",
-      description: "Développement d'applications web modernes avec React, Node.js et Flutter. Gestion de projets de A à Z."
+      year: "2024 - Présent",
+      title: "Pâtissier Professionnel & Leadership",
+      company: "Boulangerie Louise, Montréal",
+      description: "Leadership improvisé du secteur pâtisserie, formation de nouveaux employés, gestion de crise exceptionnelle. 100% respect des délais malgré obstacles."
     },
     {
-      year: "2022 - 2023",
-      title: "Développeur Frontend",
-      company: "Projets personnels",
-      description: "Création de portfolios, applications web et projets innovants avec les dernières technologies."
+      year: "2023",
+      title: "Formation AEC Développement Web",
+      company: "Collège Ahuntsic, Montréal",
+      description: "Stack complète : HTML5, CSS3, JavaScript ES6+, Node.js, Express.js, bases de données SQL/NoSQL. Méthodologies agiles et Git/GitHub."
     },
     {
-      year: "2021 - 2022",
-      title: "Formation & Apprentissage",
-      company: "Auto-formation",
-      description: "Apprentissage intensif des technologies web modernes et développement de compétences techniques."
+      year: "2019 - Présent",
+      title: "Service Client & Soft Skills",
+      company: "Caribou Gourmand, Montréal",
+      description: "Excellence service client, gestion opérations sous pression, formation d'équipes. Résistance stress exceptionnelle et communication multi-niveaux."
+    },
+    {
+      year: "2018 - 2019",
+      title: "Entraîneur en Kinésiologie",
+      company: "Nautilus Plus, Îles-des-Sœurs",
+      description: "Élaboration programmes personnalisés, conseils santé et bien-être. Approche scientifique rigoureuse et accompagnement humain."
+    },
+    {
+      year: "2009 - Présent",
+      title: "Musicien Professionnel & Athlète",
+      company: "Performance & Compétition",
+      description: "15+ années musique professionnelle, performance solo/groupe, composition. Pratique sportive régulière, discipline et persévérance."
     }
   ];
 
@@ -125,9 +137,9 @@ const About = () => {
             variants={itemVariants}
             className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            Développeur passionné avec une approche unique combinant créativité technique, 
-            discipline artistique et persévérance athlétique. Chaque domaine enrichit mon 
-            approche du développement et de la résolution de problèmes.
+            🚀 <strong>JUNIOR TECH UNIQUE</strong> : Quand la créativité rencontre l&apos;apprentissage technique. 
+            Formation AEC Développement Web + 15 ans de musique + compétition athlétique + kinésiologie + artisanat = 
+            Un junior avec des soft skills exceptionnelles et une approche créative de la résolution de problèmes.
           </motion.p>
         </motion.div>
 
@@ -238,10 +250,10 @@ const About = () => {
               Ma Philosophie
             </h3>
             <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
-              &ldquo;La combinaison de la créativité artistique, de la discipline athlétique et 
-              de la précision technique me permet d&apos;aborder chaque projet avec une 
-              perspective unique. Je crois que la diversité d&apos;expériences enrichit 
-              l&apos;innovation et la qualité du code.&rdquo;
+              &ldquo;Dans chaque discipline que j&apos;ai explorée - musique, artisanat, cuisine, échecs - 
+              j&apos;ai appris que l&apos;excellence naît de la passion, de la discipline et de l&apos;apprentissage constant. 
+              Mon parcours de résilience m&apos;a enseigné la persévérance, l&apos;adaptabilité et la capacité 
+              de transformer les défis en opportunités. Je transporte cette mentalité dans mon apprentissage tech.&rdquo;
             </p>
           </motion.div>
         </motion.div>
