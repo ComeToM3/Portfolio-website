@@ -40,8 +40,8 @@
 - FE — Phase 2 (en cours)
   - ÉTAPE 2.1 : Hero Section ✅
   - ÉTAPE 2.2 : About Section ✅
-  - ÉTAPE 2.3 : Skills Section (prochaine étape)
-  - ÉTAPE 2.4 : Projects Section
+  - ÉTAPE 2.3 : Skills Section ✅
+  - ÉTAPE 2.4 : Projects Section (prochaine étape)
   - ÉTAPE 2.5 : Contact Section et Footer
 
 ### 📋 PHASES SUIVANTES
