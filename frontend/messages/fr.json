@@ -1,0 +1,10 @@
+{
+  "HomePage": {
+    "title": "Bienvenue",
+    "description": "Ceci est la page d'accueil en français"
+  },
+  "Navigation": {
+    "home": "Accueil",
+    "about": "À propos"
+  }
+}

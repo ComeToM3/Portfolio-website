@@ -1132,3 +1132,160 @@ npm install
 - Vérifier la responsivité
 - Tester l'accessibilité
 - Valider les performances
+
+---
+## 🌐 Internationalisation (i18n) - Solution Personnalisée
+
+### Vue d'ensemble
+Le projet utilise un système de traductions personnalisé plutôt que `next-intl` pour une meilleure fiabilité et simplicité.
+
+### Architecture de l'i18n
+
+#### 1. Structure des URLs
+```
+/fr - Contenu en français (locale par défaut)
+/en - Contenu en anglais
+```
+
+#### 2. Hook personnalisé `useTranslations`
+```typescript
+// src/lib/i18n/useTranslations.ts
+import { useParams } from 'next/navigation';
+
+const messages = {
+  fr: {
+    hero: { /* traductions françaises */ },
+    navigation: { /* traductions françaises */ },
+    about: { /* traductions françaises */ },
+    skills: { /* traductions françaises */ },
+    projects: { /* traductions françaises */ },
+    contact: { /* traductions françaises */ }
+  },
+  en: {
+    hero: { /* traductions anglaises */ },
+    navigation: { /* traductions anglaises */ },
+    about: { /* traductions anglaises */ },
+    skills: { /* traductions anglaises */ },
+    projects: { /* traductions anglaises */ },
+    contact: { /* traductions anglaises */ }
+  }
+};
+
+export function useTranslations(namespace: string) {
+  const params = useParams();
+  const locale = params?.locale as string || 'fr';
+  
+  const t = (key: string) => {
+    const namespaceMessages = messages[locale as keyof typeof messages]?.[namespace as keyof typeof messages.fr];
+    return namespaceMessages?.[key as keyof typeof namespaceMessages] || key;
+  };
+  
+  return t;
+}
+```
+
+#### 3. Configuration Next.js
+```typescript
+// next.config.ts - Configuration minimale
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
+  experimental: {
+    // Configuration de base uniquement
+  }
+};
+
+export default nextConfig;
+```
+
+#### 4. Layout avec support des locales
+```typescript
+// src/app/[locale]/layout.tsx
+import { Inter } from 'next/font/google';
+import '../globals.css';
+import Header from '@/components/layout/Header';
+
+const inter = Inter({ subsets: ['latin'] });
+const locales = ['en', 'fr'];
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
+  children,
+  params
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  
+  if (!locales.includes(locale as any)) {
+    return null;
+  }
+
+  return (
+    <html lang={locale}>
+      <body className={inter.className}>
+        <Header />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+#### 5. Utilisation dans les composants
+```typescript
+// Dans Hero.tsx, Header.tsx, etc.
+import { useTranslations } from '@/lib/i18n/useTranslations';
+
+const Hero = () => {
+  const t = useTranslations('hero');
+  
+  return (
+    <section>
+      <h1>{t('title')}</h1>
+      <p>{t('description')}</p>
+      <button>{t('cta_primary')}</button>
+    </section>
+  );
+};
+```
+
+### Avantages de cette approche
+
+1. **Simplicité** : Pas de dépendances externes complexes
+2. **Fiabilité** : Contrôle total sur les traductions
+3. **Performance** : Pas de surcharge de plugins
+4. **Maintenabilité** : Code centralisé et facile à comprendre
+5. **Flexibilité** : Facile d'ajouter de nouvelles langues
+
+### Gestion des traductions
+
+#### Ajouter une nouvelle langue
+1. Ajouter la locale dans le tableau `locales`
+2. Ajouter les traductions dans l'objet `messages`
+3. Tester les URLs avec la nouvelle locale
+
+#### Ajouter de nouvelles traductions
+1. Ajouter les clés dans l'objet `messages` pour chaque langue
+2. Utiliser `t('nouvelle_cle')` dans les composants
+3. Vérifier que les traductions s'affichent correctement
+
+### Commandes de test
+```bash
+# Tester les URLs
+curl -I http://localhost:3000/fr
+curl -I http://localhost:3000/en
+
+# Nettoyer le cache si nécessaire
+rm -rf .next
+npm run dev
+```
+
+### Dépannage
+Voir le guide de dépannage complet : `docs/guides/troubleshooting-guide.md`
+
+---

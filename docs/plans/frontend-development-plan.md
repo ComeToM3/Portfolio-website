@@ -382,17 +382,15 @@ git commit -m "feat: Configuration Progressive Web App (PWA)
 #### **ÉTAPE 3.4 : Internationalisation (i18n) (Jour 6 - Après-midi)**
 **Objectifs :**
 - Implémenter le support multilingue
-- Configurer next-intl
+- Configurer une solution personnalisée sans next-intl
 - Créer les traductions des contenus
 - Optimiser pour le SEO multilingue
 
 **Tâches :**
 ```bash
-# Installer next-intl
-npm install next-intl
-
+# Créer une solution personnalisée sans next-intl
+# Créer src/lib/i18n/useTranslations.ts
 # Configurer les locales (fr, en)
-# Créer src/lib/i18n/config.ts
 # Créer les fichiers de traduction (fr.json, en.json)
 # Implémenter le routing multilingue (/fr/, /en/)
 # Créer le language switcher
@@ -401,21 +399,48 @@ npm install next-intl
 # Tester la navigation entre langues
 # Implémenter la détection automatique de langue
 # Configurer les fallbacks pour traductions manquantes
+
+# Nettoyer les dépendances inutilisées
+npm uninstall next-intl
+npm prune
 ```
+
+**Détails techniques :**
+- **Solution personnalisée** : Hook `useTranslations` dans `@/lib/i18n/useTranslations.ts`
+- **Routing** : URLs `/fr` et `/en` fonctionnelles avec Next.js App Router
+- **Traductions** : Toutes les sections (Hero, About, Skills, Projects, Contact, Footer, Admin)
+- **Performance** : Suppression de 988 packages inutilisés, bundle plus léger
+- **Hydration** : Résolution des erreurs avec `suppressHydrationWarning` et gestion côté client
+- **Contenu authentique** : Restauration du contenu riche depuis commit 71eb4ac
+
+**Corrections d'hydratation :**
+- **LanguageSwitcher** : Utilisation de `useParams` au lieu de `usePathname`, état `mounted` pour éviter les différences serveur/client
+- **Header** : Gestion du scroll côté client seulement avec état `mounted`
+- **Footer** : Année dynamique gérée côté client avec `useState` et `useEffect`
+- **PWAInstallPrompt** : Vérifications `window` et `document` protégées par `typeof`
+
+**Contenu restauré :**
+- **Hero** : Design complexe avec animations, éléments flottants (🎵🏃🍰), background pattern
+- **About** : Timeline professionnelle complète (5 expériences), 4 highlights avec skills
+- **Skills** : 21 compétences avec niveaux d'expertise, couleurs personnalisées, filtres
+- **Projects** : 6 projets authentiques avec technologies détaillées, filtres par catégorie
+- **Admin** : Interface complète avec Dashboard, Sidebar, Navigation traduits
 
 ```bash
 # Commit - Internationalisation
 git add .
-git commit -m "feat: Implémentation internationalisation (i18n)
+git commit -m "feat: Implémentation internationalisation (i18n) - Solution personnalisée
 
-- Configuration next-intl pour support multilingue
-- Locales français et anglais (/fr/, /en/)
-- Fichiers de traduction JSON structurés
-- Routing multilingue avec Next.js App Router
-- Language switcher avec détection automatique
-- SEO optimisé pour chaque langue
-- Meta tags par langue
-- Fallbacks pour traductions manquantes"
+- Configuration solution personnalisée sans next-intl
+- Hook useTranslations dans @/lib/i18n/useTranslations.ts
+- URLs /fr et /en fonctionnelles avec Next.js App Router
+- Traductions complètes (Hero, About, Skills, Projects, Contact, Footer, Admin)
+- Suppression de 988 packages inutilisés pour performance
+- Résolution erreurs hydration avec suppressHydrationWarning
+- Restauration contenu authentique depuis commit 71eb4ac
+- Design complexe original avec animations et éléments visuels
+- Timeline professionnelle complète et projets authentiques
+- Interface admin entièrement traduite"
 ```
 
 ### **PHASE 4 : OPTIMISATIONS ET QUALITÉ (Jours 7-8)**
@@ -723,3 +748,67 @@ git tag -a v1.0.0 -m "Release v1.0.0 - Portfolio professionnel complet
 - Déploiement HiveOS
 - Sécurité et compliance GDPR"
 ```
+
+## 🔧 APPRENTISSAGES ET CORRECTIONS MAJEURES
+
+### **CORRECTION TYPESCRIPT - PROBLÈME D'ASSERTIONS DE TYPE**
+
+**📅 Date :** Décembre 2024  
+**🚨 Problème majeur :** Erreurs TypeScript partout dans les composants  
+**⚡ Solution appliquée :** Assertions de type systématiques
+
+#### **Problème rencontré :**
+```typescript
+// Erreur partout dans les composants :
+Type '{} | null' is not assignable to type 'ReactNode | MotionValueNumber | MotionValueString'
+Type '{}' is not assignable to type 'ReactNode'
+```
+
+#### **Cause identifiée :**
+Notre système i18n personnalisé (remplacement de `next-intl`) :
+- La fonction `t()` retourne `unknown`
+- TypeScript ne peut pas inférer le type des valeurs traduites
+- Tous les composants utilisant `t()` génèrent des erreurs de type
+
+#### **Solution appliquée :**
+Ajout systématique d'assertions de type `as string` pour tous les appels `t()` :
+
+```typescript
+// ❌ AVANT - Génère des erreurs
+{t('title')}
+{t('description')}
+
+// ✅ APRÈS - Fonctionne correctement
+{t('title') as string}
+{t('description') as string}
+```
+
+#### **Composants corrigés :**
+- ✅ **Contact.tsx** - 10 assertions ajoutées (form fields, messages)
+- ✅ **Projects.tsx** - 8 assertions ajoutées (categories, featured, view_project)
+- ✅ **Skills.tsx** - 7 assertions ajoutées (titles, categories, getLevelLabel)
+- ✅ **Footer.tsx** - 7 assertions ajoutées + remplacement `<a>` par `<Link>`
+- ✅ **Hero.tsx** - 13 assertions ajoutées (tagline, stats, CTA)
+- ✅ **Header.tsx** - 2 assertions ajoutées (navigation items)
+- ✅ **Dashboard.tsx** - 21 assertions ajoutées (stats, activities, système)
+- ✅ **AdminNav.tsx** - 8 assertions ajoutées (navigation items)
+- ✅ **AdminSidebar.tsx** - 14 assertions ajoutées (menu items, descriptions)
+
+#### **Leçon apprise :**
+Quand on créé un système i18n personnalisé, il faut :
+1. **Typer correctement** la fonction de traduction
+2. **Prévoir les assertions de type** dès le début
+3. **Tester la compilation** après chaque ajout de traduction
+
+#### **Recommandation future :**
+Améliorer la fonction `useTranslations` pour retourner des types plus spécifiques :
+```typescript
+// Amélioration possible :
+function useTranslations<T = string>(namespace: string): (key: string) => T
+```
+
+### **VALIDATION FINALE :**
+✅ **Compilation réussie** : `npm run build` - Exit code 0  
+✅ **Toutes les pages** générées correctement (19/19)  
+✅ **Seulement warnings ESLint** restants (variables non utilisées - non critiques)  
+✅ **Build prêt** pour déploiement

@@ -74,4 +74,5 @@ export const requireRole = (roles: string[]) => {
 };
 
 export const requireAdmin = requireRole(['ADMIN']);
-export const requireUser = requireRole(['USER', 'ADMIN']);
+export const requireHordeariiApp = requireRole(['hordearii-app']);
+export const requireUser = requireRole(['USER', 'ADMIN', 'hordearii-app']);

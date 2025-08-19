@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
+import { useTranslations } from '@/lib/i18n/useTranslations';
 
 interface Project {
   id: string;
@@ -19,98 +20,18 @@ interface Project {
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const t = useTranslations('projects');
 
-  // Données de projets par défaut (fallback)
-  const defaultProjects: Project[] = [
-    {
-      id: '1',
-      title: 'Hordearii App - Flutter (Phase 2)',
-      description: 'Application mobile complète développée avec collaboration IA en 2 jours. Architecture moderne : Riverpod, Isar DB, TensorFlow Lite, FLChart. Classification IA, coaching comportemental, tests complets.',
-      category: 'Mobile',
-      technologies: ['Flutter', 'Dart', 'Riverpod', 'Isar DB', 'TensorFlow Lite'],
-      featured: true,
-      githubUrl: 'https://github.com/ComeToM3/hordearii-app',
-      liveUrl: 'https://hordearii.ca/apps'
-    },
-    {
-      id: '2',
-      title: 'Infrastructure Web Durable',
-      description: 'Hébergement web sur rig mining HiveOS Standard avec Docker. Configuration serveur, site portfolio, pages applications. Approche durable : utilisation rig en été pour hébergement web.',
-      category: 'Backend',
-      technologies: ['Docker', 'HiveOS', 'Nginx', 'Linux', 'CI/CD'],
-      featured: true,
-      githubUrl: 'https://github.com/ComeToM3/Portfolio-website',
-      liveUrl: 'https://hordearii.ca'
-    },
-    {
-      id: '3',
-      title: 'Portfolio Web Professionnel',
-      description: 'Portfolio moderne avec Next.js, TypeScript, Tailwind CSS. Gestion Git professionnelle avec convention de commits, semantic versioning, CI/CD pipeline. Historique de développement structuré.',
-      category: 'Web',
-      technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Git', 'CI/CD'],
-      featured: true,
-      githubUrl: 'https://github.com/ComeToM3/Portfolio-website',
-      liveUrl: 'https://hordearii.ca'
-    },
-    {
-      id: '4',
-      title: 'API Backend Portfolio',
-      description: 'API REST complète avec Node.js, Express.js, PostgreSQL, Prisma. Authentification JWT, middleware de sécurité, tests unitaires. Architecture scalable et documentation complète.',
-      category: 'Backend',
-      technologies: ['Node.js', 'Express.js', 'PostgreSQL', 'Prisma', 'JWT'],
-      featured: false,
-      githubUrl: 'https://github.com/ComeToM3/Portfolio-website',
-      liveUrl: 'https://api.hordearii.ca'
-    },
-    {
-      id: '5',
-      title: 'Gestion Git Professionnelle',
-      description: 'Workflow Git enterprise avec convention de commits, feature branches, pull requests, semantic versioning. CI/CD pipeline GitHub Actions pour déploiement automatisé.',
-      category: 'Tools',
-      technologies: ['Git', 'GitHub Actions', 'CI/CD', 'Docker', 'Semantic Versioning'],
-      featured: false,
-      githubUrl: 'https://github.com/ComeToM3/Portfolio-website'
-    },
-    {
-      id: '6',
-      title: 'Projets d\'Apprentissage',
-      description: 'Projets personnels divers : applications web, scripts d\'automatisation, expérimentations technologiques. Apprentissage continu et veille technologique active.',
-      category: 'Web',
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'Flutter'],
-      featured: false,
-      githubUrl: 'https://github.com/ComeToM3'
-    }
-  ];
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch('http://localhost:3001/api/projects/public');
-        if (response.ok) {
-          const data = await response.json();
-          setProjects(data);
-        } else {
-          setProjects(defaultProjects);
-        }
-      } catch (error) {
-        console.log('Using default projects data');
-        setProjects(defaultProjects);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
+  // Projets authentiques du guide de profil
+  const projects: Project[] = t('projects_list') as Project[];
 
   const categories = [
-    { id: 'all', name: 'Tous', icon: '🌟' },
-    { id: 'Web', name: 'Web', icon: '🌐' },
-    { id: 'Mobile', name: 'Mobile', icon: '📱' },
-    { id: 'Backend', name: 'Backend', icon: '⚙️' },
+    { id: 'all', name: t('categories.all') as string, icon: '🌟' },
+    { id: 'Web', name: t('categories.web') as string, icon: '🌐' },
+    { id: 'Mobile', name: t('categories.mobile') as string, icon: '📱' },
+    { id: 'Backend', name: t('categories.backend') as string, icon: '⚙️' },
+    { id: 'Tools', name: t('categories.tools') as string, icon: '🛠️' }
   ];
 
   const filteredProjects = selectedCategory === 'all' 
@@ -160,19 +81,6 @@ const Projects = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <section id="projects" className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
-            <p className="text-gray-400 mt-4">Chargement des projets...</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section id="projects" className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
       {/* Background Effects */}
@@ -194,15 +102,14 @@ const Projects = () => {
             variants={itemVariants}
             className="text-4xl sm:text-5xl font-bold text-white mb-6"
           >
-            Mes Projets
+            {t('title') as string}
           </motion.h2>
-                      <motion.p
-              variants={itemVariants}
-              className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
-            >
-              Une sélection de mes projets authentiques, démontrant mes compétences 
-              en développement junior et ma collaboration IA-Humain pour développement rapide.
-            </motion.p>
+          <motion.p
+            variants={itemVariants}
+            className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+          >
+            {t('subtitle') as string}
+          </motion.p>
         </motion.div>
 
         {/* Category Filter */}
@@ -241,7 +148,7 @@ const Projects = () => {
               variants={itemVariants}
               className="text-2xl font-bold text-white text-center mb-8"
             >
-              Projets Vedettes
+              {t('featured') as string}
             </motion.h3>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {projects.filter(p => p.featured).slice(0, 3).map((project) => (
@@ -257,7 +164,7 @@ const Projects = () => {
                       <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
                         <span className="text-2xl">🚀</span>
                       </div>
-                      <p className="text-white/80 text-sm">Image du projet</p>
+                      <p className="text-white/80 text-sm">{t('screenshot') as string}</p>
                     </div>
                   </div>
 
@@ -267,7 +174,7 @@ const Projects = () => {
                       <h4 className="text-xl font-semibold text-white">{project.title}</h4>
                       {project.featured && (
                         <span className="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full border border-blue-500/30">
-                          Vedette
+                          {t('featured') as string}
                         </span>
                       )}
                     </div>
@@ -311,7 +218,7 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-4 rounded-lg transition-colors duration-300"
                         >
-                          Voir le projet
+                          {t('view_project') as string}
                         </a>
                       )}
                     </div>
@@ -342,7 +249,7 @@ const Projects = () => {
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full mx-auto mb-2 flex items-center justify-center">
                     <span className="text-xl">💻</span>
                   </div>
-                  <p className="text-white/80 text-xs">Image du projet</p>
+                  <p className="text-white/80 text-xs">{t('screenshot') as string}</p>
                 </div>
               </div>
 
@@ -352,7 +259,7 @@ const Projects = () => {
                   <h4 className="text-lg font-semibold text-white">{project.title}</h4>
                   {project.featured && (
                     <span className="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full border border-blue-500/30">
-                      Vedette
+                      {t('featured') as string}
                     </span>
                   )}
                 </div>
@@ -396,7 +303,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-3 rounded-lg transition-colors duration-300 text-sm"
                     >
-                      Voir
+                      {t('view_project') as string}
                     </a>
                   )}
                 </div>
@@ -417,12 +324,10 @@ const Projects = () => {
             className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8 backdrop-blur-sm"
           >
             <h3 className="text-2xl font-bold text-white mb-4">
-              Approche de Développement
+              {t('philosophy_title') as string}
             </h3>
             <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
-              Chaque projet est une opportunité d&apos;innovation et d&apos;apprentissage. 
-              Je privilégie le code propre, les performances optimales et l&apos;expérience 
-              utilisateur exceptionnelle. Collaboration IA-Humain pour développement rapide et efficace.
+              {t('philosophy_text') as string}
             </p>
           </motion.div>
         </motion.div>

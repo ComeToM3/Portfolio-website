@@ -1,0 +1,270 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "view": "View",
+    "download": "Download",
+    "share": "Share",
+    "copy": "Copy",
+    "language": "Language",
+    "theme": "Theme",
+    "settings": "Settings",
+    "menu": "Menu",
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "projects": "Projects",
+    "skills": "Skills",
+    "experience": "Experience",
+    "education": "Education",
+    "blog": "Blog",
+    "admin": "Administration",
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "profile": "Profile",
+    "dashboard": "Dashboard"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact",
+    "admin": "Admin",
+    "mobile_app": "Mobile App",
+    "download": "Download"
+  },
+  "hero": {
+    "title": "Johan Dominguez",
+    "subtitle": "Full Stack Developer",
+    "description": "Passionate about technology, music, and innovation. I create digital solutions that combine performance and creativity.",
+    "cta_primary": "View my projects",
+    "cta_secondary": "Contact me",
+    "scroll_down": "Scroll down",
+    "tagline": "Developer • Musician • Athlete • Pastry Chef"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "A unique journey, an innovative vision",
+    "description": "I am a passionate full stack developer with a unique approach combining technology, creativity, and discipline. My diverse background has allowed me to develop a holistic perspective on software development.",
+    "personal_info": {
+      "title": "Personal Information",
+      "name": "Name",
+      "age": "Age",
+      "location": "Location",
+      "email": "Email",
+      "phone": "Phone",
+      "website": "Website",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
+    "interests": {
+      "title": "Interests",
+      "technology": "Technology",
+      "music": "Music",
+      "sports": "Sports",
+      "cooking": "Cooking",
+      "travel": "Travel",
+      "reading": "Reading"
+    },
+    "values": {
+      "title": "My Values",
+      "innovation": "Innovation",
+      "quality": "Quality",
+      "collaboration": "Collaboration",
+      "learning": "Continuous Learning",
+      "creativity": "Creativity",
+      "excellence": "Excellence"
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Technologies and tools mastered",
+    "technical_skills": "Technical Skills",
+    "soft_skills": "Soft Skills",
+    "languages": "Programming Languages",
+    "frameworks": "Frameworks & Libraries",
+    "databases": "Databases",
+    "tools": "Tools & Platforms",
+    "cloud": "Cloud & DevOps",
+    "mobile": "Mobile Development",
+    "web": "Web Development",
+    "level": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced",
+      "expert": "Expert"
+    },
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "devops": "DevOps",
+      "database": "Database",
+      "design": "Design",
+      "testing": "Testing",
+      "other": "Other"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "My recent achievements",
+    "view_project": "View project",
+    "view_code": "View code",
+    "live_demo": "Live demo",
+    "technologies_used": "Technologies used",
+    "project_type": "Project type",
+    "duration": "Duration",
+    "team_size": "Team size",
+    "role": "Role",
+    "description": "Description",
+    "challenges": "Challenges",
+    "solutions": "Solutions",
+    "results": "Results",
+    "learnings": "Learnings",
+    "categories": {
+      "web_app": "Web application",
+      "mobile_app": "Mobile application",
+      "api": "API",
+      "website": "Website",
+      "ecommerce": "E-commerce",
+      "dashboard": "Dashboard",
+      "game": "Game",
+      "other": "Other"
+    },
+    "status": {
+      "completed": "Completed",
+      "in_progress": "In progress",
+      "planned": "Planned",
+      "on_hold": "On hold"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's work together",
+    "description": "Have a project in mind? Let's talk about it! I'm always open to new opportunities and interesting collaborations.",
+    "form": {
+      "name": "Full name",
+      "email": "Email address",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Error sending message"
+    },
+    "info": {
+      "title": "Contact Information",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "availability": "Availability",
+      "response_time": "Response time"
+    },
+    "social": {
+      "title": "Social Networks",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "youtube": "YouTube"
+    }
+  },
+  "admin": {
+    "title": "Administration",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "projects": "Project Management",
+    "skills": "Skills Management",
+    "users": "Users",
+    "settings": "Settings",
+    "logout": "Logout",
+    "login": {
+      "title": "Admin Login",
+      "email": "Email",
+      "password": "Password",
+      "login": "Login",
+      "error": "Incorrect email or password"
+    },
+    "profile_editor": {
+      "title": "Profile Editor",
+      "personal_info": "Personal Information",
+      "bio": "Biography",
+      "skills": "Skills",
+      "experience": "Experience",
+      "education": "Education",
+      "save": "Save changes"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 Johan Dominguez. All rights reserved.",
+    "made_with": "Made with",
+    "by": "by",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service",
+    "sitemap": "Sitemap"
+  },
+  "pwa": {
+    "install_prompt": {
+      "title": "Install App",
+      "description": "Add this portfolio to your home screen for quick access and offline use",
+      "install": "Install",
+      "later": "Later",
+      "learn_more": "Learn more"
+    },
+    "offline": {
+      "title": "You're offline",
+      "description": "No problem! This app works even without an internet connection.",
+      "retry": "Retry connection",
+      "features": "Features available offline"
+    }
+  },
+  "errors": {
+    "404": {
+      "title": "Page not found",
+      "description": "The page you're looking for doesn't exist.",
+      "back_home": "Back to home"
+    },
+    "500": {
+      "title": "Server error",
+      "description": "An error occurred. Please try again later.",
+      "retry": "Retry"
+    },
+    "network": {
+      "title": "Connection error",
+      "description": "Unable to connect to server. Check your internet connection.",
+      "retry": "Retry"
+    }
+  },
+  "seo": {
+    "home": {
+      "title": "Johan Dominguez - Professional Portfolio | Hordearii",
+      "description": "Professional portfolio of Johan Dominguez - Full Stack Developer, Musician, Athlete and Pastry Chef. Discover my projects, skills and experiences."
+    },
+    "about": {
+      "title": "About - Johan Dominguez | Hordearii",
+      "description": "Discover the unique journey of Johan Dominguez, a full stack developer passionate about technology, music and innovation."
+    },
+    "projects": {
+      "title": "Projects - Johan Dominguez | Hordearii",
+      "description": "Explore the projects and achievements of Johan Dominguez, a creative and innovative full stack developer."
+    },
+    "contact": {
+      "title": "Contact - Johan Dominguez | Hordearii",
+      "description": "Contact Johan Dominguez to discuss your projects and collaboration opportunities."
+    }
+  }
+}

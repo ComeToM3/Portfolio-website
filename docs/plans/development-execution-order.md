@@ -6,6 +6,7 @@
 - Pour l'éxécution quotidienne (étapes/commandes/commits), suivre: `FRONTEND_DEV_PLAN.md` et `BACKEND_DEV_PLAN.md`.
 
 ---
+
 ## 🚦 Démarrage (Jour 0,5)
 - FE (ÉTAPE 1.1 → 1.3) ✅ **COMPLÉTÉ**
   - 1.1 Setup Next.js et Configuration Initiale ✅
@@ -17,6 +18,7 @@
   - 1.3 Configuration de sécurité de base ✅
 
 ---
+
 ## 🔁 Ordre successif recommandé (vertical slices courtes)
 
 ### ✅ PHASE 1 COMPLÉTÉE
@@ -48,8 +50,8 @@
 - FE — Phase 3 ✅
   - ÉTAPE 3.1 : Pages Additionnelles ✅
   - ÉTAPE 3.2 : Interface d'Administration ✅
-  - ÉTAPE 3.3 : Configuration PWA
-  - ÉTAPE 3.4 : Internationalisation (i18n)
+  - ÉTAPE 3.3 : Configuration PWA ✅
+  - ÉTAPE 3.4 : Internationalisation (i18n) ✅
 
 ### 📋 PHASES SUIVANTES
 - BE — Phase 3
@@ -59,10 +61,10 @@
   - ÉTAPE 3.4 : API Documentation
 
 - FE — Phase 4
-  - ÉTAPE 4.1 : Pages Additionnelles
-  - ÉTAPE 4.2 : Interface d'Administration 
-  - ÉTAPE 4.3 : Configuration PWA
-  - ÉTAPE 4.4 : Internationalisation (i18n)
+  - ÉTAPE 4.1 : Accessibilité avancée
+  - ÉTAPE 4.2 : Analytics et Monitoring
+  - ÉTAPE 4.3 : Optimisations finales
+  - ÉTAPE 4.4 : Tests et validation
 
 - FE/BE — Phase 5 (Qualité/Observabilité)
   - FE 5.1 : Accessibilité avancée
@@ -86,6 +88,7 @@
 **Note :** Le backend se termine à la Phase 5 (8 jours). Les phases 6-7 sont frontend uniquement.
 
 ---
+
 ## 🧭 Règles d'or d'exécution
 - Alternance courte FE/BE: tranches de 0,5 à 1 jour maximum; intégrer quotidiennement.
 - Contract‑first: schémas Zod/OpenAPI, types partagés (`shared/`) si monorepo.
@@ -93,6 +96,7 @@
 - Déployer tôt un "staging" (sous‑domaine) sur le rig pour valider Nginx/PM2/SSL.
 
 ---
+
 ## 🔗 Références
 - Guides (vision/architecture): `FRONTEND_DEV_GUIDE.md`, `BACKEND_DEV_GUIDE.md`
 - Plans (exécution/commandes): `FRONTEND_DEV_PLAN.md`, `BACKEND_DEV_PLAN.md`

@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
+import { useTranslations } from '@/lib/i18n/useTranslations';
 
 interface Skill {
   id: string;
@@ -10,71 +11,24 @@ interface Skill {
   category: string;
   level: number;
   icon?: string;
+  color?: string;
 }
 
 const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [skills, setSkills] = useState<Skill[]>([]);
-  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const t = useTranslations('skills');
 
-  // Données de compétences par défaut (fallback)
-  const defaultSkills: Skill[] = [
-    // Frontend
-    { id: '1', name: 'HTML5', category: 'Frontend', level: 85, icon: '🌐' },
-    { id: '2', name: 'CSS3', category: 'Frontend', level: 80, icon: '🎨' },
-    { id: '3', name: 'JavaScript', category: 'Frontend', level: 75, icon: '🟨' },
-    { id: '4', name: 'Responsive Design', category: 'Frontend', level: 80, icon: '📱' },
-    { id: '5', name: 'UX/UI', category: 'Frontend', level: 70, icon: '✨' },
-    
-    // Backend
-    { id: '6', name: 'Node.js', category: 'Backend', level: 75, icon: '🟢' },
-    { id: '7', name: 'Express.js', category: 'Backend', level: 70, icon: '🚂' },
-    { id: '8', name: 'SQL', category: 'Backend', level: 75, icon: '🗄️' },
-    { id: '9', name: 'NoSQL', category: 'Backend', level: 60, icon: '📊' },
-    { id: '10', name: 'REST APIs', category: 'Backend', level: 75, icon: '🔗' },
-    
-    // Mobile
-    { id: '11', name: 'Flutter', category: 'Mobile', level: 80, icon: '📱' },
-    { id: '12', name: 'Dart', category: 'Mobile', level: 75, icon: '🎯' },
-    { id: '13', name: 'Riverpod', category: 'Mobile', level: 70, icon: '🔄' },
-    { id: '14', name: 'Isar DB', category: 'Mobile', level: 70, icon: '💾' },
-    
-    // Tools & Others
-    { id: '15', name: 'Git/GitHub', category: 'Tools', level: 90, icon: '📝' },
-    { id: '16', name: 'Docker', category: 'Tools', level: 70, icon: '🐳' },
-    { id: '17', name: 'CI/CD', category: 'Tools', level: 75, icon: '⚡' },
-    { id: '18', name: 'HiveOS', category: 'Tools', level: 80, icon: '🖥️' },
-  ];
-
-  useEffect(() => {
-    const fetchSkills = async () => {
-      try {
-        const response = await fetch('http://localhost:3001/api/skills/public');
-        if (response.ok) {
-          const data = await response.json();
-          setSkills(data);
-        } else {
-          setSkills(defaultSkills);
-        }
-      } catch (error) {
-        console.log('Using default skills data');
-        setSkills(defaultSkills);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSkills();
-  }, []);
+  // Données de compétences authentiques du guide de profil
+  const skills: Skill[] = t('skills_list') as Skill[];
 
   const categories = [
-    { id: 'all', name: 'Toutes', icon: '🌟' },
-    { id: 'Frontend', name: 'Frontend', icon: '💻' },
-    { id: 'Backend', name: 'Backend', icon: '⚙️' },
-    { id: 'Mobile', name: 'Mobile', icon: '📱' },
-    { id: 'Tools', name: 'Outils', icon: '🛠️' },
+    { id: 'all', name: t('categories.all') as string, icon: '🌟' },
+    { id: 'Frontend', name: t('categories.frontend') as string, icon: '💻' },
+    { id: 'Backend', name: t('categories.backend') as string, icon: '⚙️' },
+    { id: 'Mobile', name: t('categories.mobile') as string, icon: '📱' },
+    { id: 'Tools', name: t('categories.tools') as string, icon: '🛠️' },
   ];
 
   const filteredSkills = selectedCategory === 'all' 
@@ -124,18 +78,12 @@ const Skills = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <section id="skills" className="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
-            <p className="text-gray-400 mt-4">Chargement des compétences...</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const getLevelLabel = (level: number) => {
+    if (level >= 90) return t('levels.expert') as string;
+    if (level >= 80) return t('levels.advanced') as string;
+    if (level >= 70) return t('levels.intermediate') as string;
+    return t('levels.beginner') as string;
+  };
 
   return (
     <section id="skills" className="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
@@ -158,15 +106,14 @@ const Skills = () => {
             variants={itemVariants}
             className="text-4xl sm:text-5xl font-bold text-white mb-6"
           >
-            Mes Compétences
+            {t('title') as string}
           </motion.h2>
-                        <motion.p
-                variants={itemVariants}
-                className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
-              >
-                Stack technique en cours de maîtrise : Formation AEC Développement Web + projets personnels. 
-                Collaboration IA-Humain pour développement rapide et efficace.
-              </motion.p>
+          <motion.p
+            variants={itemVariants}
+            className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+          >
+            {t('subtitle') as string}
+          </motion.p>
         </motion.div>
 
         {/* Category Filter */}
@@ -218,7 +165,7 @@ const Skills = () => {
               {/* Progress Bar */}
               <div className="w-full bg-gray-700 rounded-full h-2 mb-4">
                 <motion.div
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full"
+                  className={`bg-gradient-to-r ${skill.color || 'from-blue-500 to-purple-600'} h-2 rounded-full`}
                   initial={{ width: 0 }}
                   animate={{ width: `${skill.level}%` }}
                   transition={{ duration: 1, delay: 0.2 }}
@@ -228,9 +175,7 @@ const Skills = () => {
               <div className="flex items-center justify-between text-sm">
                 <span className="text-gray-400">{skill.category}</span>
                 <span className="text-gray-300">
-                  {skill.level >= 90 ? 'Expert' : 
-                   skill.level >= 80 ? 'Avancé' : 
-                   skill.level >= 70 ? 'Intermédiaire' : 'Débutant'}
+                  {getLevelLabel(skill.level)}
                 </span>
               </div>
             </motion.div>
@@ -249,13 +194,11 @@ const Skills = () => {
             className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8 backdrop-blur-sm"
           >
             <h3 className="text-2xl font-bold text-white mb-4">
-              Approche d&apos;Apprentissage
+              {t('learning_approach.title') as string}
             </h3>
-                            <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
-                  Je privilégie l&apos;apprentissage continu et l&apos;expérimentation pratique.
-                  Chaque projet est une opportunité d&apos;approfondir mes compétences et
-                  d&apos;explorer de nouvelles technologies. Collaboration IA-Humain pour développement rapide.
-                </p>
+            <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
+              {t('learning_approach.description') as string}
+            </p>
           </motion.div>
         </motion.div>
       </div>

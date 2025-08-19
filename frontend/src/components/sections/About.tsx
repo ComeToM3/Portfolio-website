@@ -3,10 +3,19 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useTranslations } from '@/lib/i18n/useTranslations';
+
+interface Experience {
+  year: string;
+  title: string;
+  company: string;
+  description: string;
+}
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const t = useTranslations('about');
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -51,65 +60,35 @@ const About = () => {
     }
   };
 
+  // Données authentiques du guide de profil
   const highlights = [
     {
       icon: "💻",
-      title: "Développeur Junior Full-Stack",
-      description: "Formation AEC Développement Web + projets personnels. Stack complète : HTML5, CSS3, JavaScript ES6+, Node.js, Express.js, Flutter/Dart. Collaboration IA-Humain pour développement rapide.",
-      skills: ["HTML5/CSS3", "JavaScript", "Node.js", "Flutter"]
+      title: t('highlights.tech.title') as string,
+      description: t('highlights.tech.description') as string,
+      skills: t('highlights.tech.skills') as string[]
     },
     {
       icon: "🎵",
-      title: "Musicien Professionnel (15+ ans)",
-      description: "Performance solo et en groupe, composition et arrangement. Enseignement musical et gestion de projets artistiques. Excellence sous pression et créativité sous contrainte.",
-      skills: ["Performance", "Composition", "Enseignement", "Leadership"]
+      title: t('highlights.music.title') as string,
+      description: t('highlights.music.description') as string,
+      skills: t('highlights.music.skills') as string[]
     },
     {
       icon: "🏃",
-      title: "Kinésiologue & Athlète",
-      description: "Baccalauréat en Kinésiologie (UQAM). Approche scientifique rigoureuse, accompagnement humain, méthodologie structurée. Discipline sportive et bien-être physique/mental.",
-      skills: ["Approche scientifique", "Accompagnement", "Méthodologie", "Discipline"]
+      title: t('highlights.athlete.title') as string,
+      description: t('highlights.athlete.description') as string,
+      skills: t('highlights.athlete.skills') as string[]
     },
     {
       icon: "🍰",
-      title: "Pâtissier & Leadership",
-      description: "Diplôme professionnel en pâtisserie. Leadership improvisé et gestion de crise exceptionnelle. Formation d'équipes et optimisation workflows sous pression.",
-      skills: ["Leadership", "Gestion crise", "Formation", "Optimisation"]
+      title: t('highlights.pastry.title') as string,
+      description: t('highlights.pastry.description') as string,
+      skills: t('highlights.pastry.skills') as string[]
     }
   ];
 
-  const experiences = [
-    {
-      year: "2024 - Présent",
-      title: "Pâtissier Professionnel & Leadership",
-      company: "Boulangerie Louise, Montréal",
-      description: "Leadership improvisé du secteur pâtisserie, formation de nouveaux employés, gestion de crise exceptionnelle. 100% respect des délais malgré obstacles."
-    },
-    {
-      year: "2023",
-      title: "Formation AEC Développement Web",
-      company: "Collège Ahuntsic, Montréal",
-      description: "Stack complète : HTML5, CSS3, JavaScript ES6+, Node.js, Express.js, bases de données SQL/NoSQL. Méthodologies agiles et Git/GitHub."
-    },
-    {
-      year: "2019 - Présent",
-      title: "Service Client & Soft Skills",
-      company: "Caribou Gourmand, Montréal",
-      description: "Excellence service client, gestion opérations sous pression, formation d'équipes. Résistance stress exceptionnelle et communication multi-niveaux."
-    },
-    {
-      year: "2018 - 2019",
-      title: "Entraîneur en Kinésiologie",
-      company: "Nautilus Plus, Îles-des-Sœurs",
-      description: "Élaboration programmes personnalisés, conseils santé et bien-être. Approche scientifique rigoureuse et accompagnement humain."
-    },
-    {
-      year: "2009 - Présent",
-      title: "Musicien Professionnel & Athlète",
-      company: "Performance & Compétition",
-      description: "15+ années musique professionnelle, performance solo/groupe, composition. Pratique sportive régulière, discipline et persévérance."
-    }
-  ];
+  const experiences: Experience[] = t('timeline.experiences') as Experience[];
 
   return (
     <section id="about" className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
@@ -131,15 +110,13 @@ const About = () => {
             variants={itemVariants}
             className="text-4xl sm:text-5xl font-bold text-white mb-6"
           >
-            À propos de moi
+            {t('title') as string}
           </motion.h2>
           <motion.p
             variants={itemVariants}
             className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            🚀 <strong>JUNIOR TECH UNIQUE</strong> : Quand la créativité rencontre l&apos;apprentissage technique. 
-            Formation AEC Développement Web + 15 ans de musique + compétition athlétique + kinésiologie + artisanat = 
-            Un junior avec des soft skills exceptionnelles et une approche créative de la résolution de problèmes.
+            {t('description') as string}
           </motion.p>
         </motion.div>
 
@@ -165,7 +142,7 @@ const About = () => {
                 {highlight.description}
               </p>
               <div className="flex flex-wrap gap-2">
-                {highlight.skills.map((skill, skillIndex) => (
+                {highlight.skills.map((skill: string, skillIndex: number) => (
                   <span
                     key={skillIndex}
                     className="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-full border border-blue-500/30"
@@ -189,7 +166,7 @@ const About = () => {
             variants={itemVariants}
             className="text-3xl font-bold text-white text-center mb-12"
           >
-            Parcours Professionnel
+            {t('timeline.title') as string}
           </motion.h3>
 
           <div className="space-y-8">
@@ -247,13 +224,10 @@ const About = () => {
             className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8 backdrop-blur-sm"
           >
             <h3 className="text-2xl font-bold text-white mb-4">
-              Ma Philosophie
+              {t('philosophy.title') as string}
             </h3>
             <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
-              &ldquo;Dans chaque discipline que j&apos;ai explorée - musique, artisanat, cuisine, échecs - 
-              j&apos;ai appris que l&apos;excellence naît de la passion, de la discipline et de l&apos;apprentissage constant. 
-              Mon parcours de résilience m&apos;a enseigné la persévérance, l&apos;adaptabilité et la capacité 
-              de transformer les défis en opportunités. Je transporte cette mentalité dans mon apprentissage tech.&rdquo;
+              {t('philosophy.quote') as string}
             </p>
           </motion.div>
         </motion.div>

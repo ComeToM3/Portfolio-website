@@ -1,172 +1,122 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Link as ScrollLink } from 'react-scroll';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Smartphone } from 'lucide-react';
+import { useParams } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { useTranslations } from '@/lib/i18n/useTranslations';
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const navigation = [
+  { name: 'home', to: 'home' },
+  { name: 'about', to: 'about' },
+  { name: 'skills', to: 'skills' },
+  { name: 'projects', to: 'projects' },
+  { name: 'contact', to: 'contact' }
+];
+
+export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const params = useParams();
+  const locale = params?.locale as string || 'fr';
+  const t = useTranslations('navigation');
 
-  // Gérer le scroll pour le backdrop blur
+  // Attendre que le composant soit monté côté client
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Gérer le scroll seulement côté client
+  useEffect(() => {
+    if (!mounted) return;
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [mounted]);
 
-  // Fermer le menu mobile quand on clique sur un lien
-  const handleNavClick = () => {
-    setIsMenuOpen(false);
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
   };
 
-  const navItems = [
-    { name: 'Accueil', to: 'home' },
-    { name: 'À propos', to: 'about' },
-    { name: 'Compétences', to: 'skills' },
-    { name: 'Projets', to: 'projects' },
-    { name: 'Contact', to: 'contact' },
-  ];
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-black/80 backdrop-blur-md border-b border-white/10'
-          : 'bg-transparent'
-      }`}
-    >
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-black/90 backdrop-blur-md border-b border-white/10' 
+        : 'bg-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex-shrink-0"
+          <Link 
+            href={`/${locale}`}
+            className="flex items-center space-x-2 text-white hover:text-blue-400 transition-colors duration-200"
           >
-            <ScrollLink
-              to="home"
-              smooth={true}
-              duration={500}
-              className="text-2xl font-bold text-white cursor-pointer hover:text-blue-400 transition-colors"
-            >
-              Hordearii
-            </ScrollLink>
-          </motion.div>
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">JD</span>
+            </div>
+            <span className="font-bold text-lg">Johan Dominguez</span>
+          </Link>
 
-          {/* Navigation Desktop */}
-          <nav className="hidden md:flex space-x-8">
-            {navItems.map((item, index) => (
-              <motion.div
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {navigation.map((item) => (
+              <button
                 key={item.name}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => scrollToSection(item.to)}
+                className="text-white/80 hover:text-white transition-colors duration-200 text-sm font-medium"
               >
-                <ScrollLink
-                  to={item.to}
-                  smooth={true}
-                  duration={500}
-                  className="text-white hover:text-blue-400 transition-colors cursor-pointer font-medium"
-                  activeClass="text-blue-400"
-                  spy={true}
-                  offset={-64}
-                >
-                  {item.name}
-                </ScrollLink>
-              </motion.div>
+                {t(item.name) as string}
+              </button>
             ))}
-            
-            {/* Lien vers l'app mobile */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-            >
-              <Link
-                href="/app-mobile"
-                className="inline-flex items-center text-white hover:text-blue-400 transition-colors cursor-pointer font-medium"
-              >
-                <Smartphone className="w-4 h-4 mr-1" />
-                App Mobile
-              </Link>
-            </motion.div>
           </nav>
 
-          {/* Bouton Menu Mobile */}
-          <motion.button
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="md:hidden p-2 text-white hover:text-blue-400 transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </motion.button>
-        </div>
-      </div>
+          {/* Language Switcher */}
+          <div className="hidden md:block">
+            <LanguageSwitcher />
+          </div>
 
-      {/* Menu Mobile */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-black/95 backdrop-blur-md border-t border-white/10"
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-white hover:text-blue-400 transition-colors duration-200"
+            aria-label="Toggle mobile menu"
           >
-            <nav className="px-4 py-6 space-y-4">
-              {navItems.map((item, index) => (
-                <motion.div
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-white/10">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {navigation.map((item) => (
+                <button
                   key={item.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  onClick={() => scrollToSection(item.to)}
+                  className="block w-full text-left px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-md transition-colors duration-200 text-sm font-medium"
                 >
-                  <ScrollLink
-                    to={item.to}
-                    smooth={true}
-                    duration={500}
-                    className="block text-white hover:text-blue-400 transition-colors cursor-pointer font-medium py-2"
-                    onClick={handleNavClick}
-                    activeClass="text-blue-400"
-                    spy={true}
-                    offset={-64}
-                  >
-                    {item.name}
-                  </ScrollLink>
-                </motion.div>
+                  {t(item.name) as string}
+                </button>
               ))}
               
-              {/* Lien vers l'app mobile dans le menu mobile */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.6 }}
-              >
-                <Link
-                  href="/app-mobile"
-                  className="flex items-center text-white hover:text-blue-400 transition-colors cursor-pointer font-medium py-2"
-                  onClick={handleNavClick}
-                >
-                  <Smartphone className="w-4 h-4 mr-2" />
-                  App Mobile
-                </Link>
-              </motion.div>
-            </nav>
-          </motion.div>
+              {/* Mobile Language Switcher */}
+              <div className="px-3 py-2">
+                <LanguageSwitcher />
+              </div>
+            </div>
+          </div>
         )}
-      </AnimatePresence>
+      </div>
     </header>
   );
-};
-
-export default Header;
+}

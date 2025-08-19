@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useTranslations } from '@/lib/i18n/useTranslations';
 
 const Hero = () => {
+  const t = useTranslations('hero');
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -41,7 +44,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-blue-900">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-blue-900 pt-16">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.1%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
@@ -83,20 +86,20 @@ const Hero = () => {
           {/* Content Column */}
           <motion.div className="text-center lg:text-left" variants={itemVariants}>
             <motion.div
-              className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6"
+              className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6 relative"
               variants={itemVariants}
             >
               <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
-              Junior Tech Unique - Soft Skills Exceptionnelles
+              {t('tagline') as string}
             </motion.div>
 
             <motion.h1
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
               variants={itemVariants}
             >
-              <span className="block">Johan</span>
+              <span className="block">{t('title') as string}</span>
               <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Dominguez
+                {t('subtitle') as string}
               </span>
             </motion.h1>
 
@@ -104,9 +107,7 @@ const Hero = () => {
               className="text-xl sm:text-2xl text-gray-300 mb-8 leading-relaxed"
               variants={itemVariants}
             >
-              Développeur Junior Full-Stack en Formation | HTML•CSS•JS•SQL•Flutter•Express | 
-              <br className="hidden sm:block" />
-              Kinésiologue•Musicien•Athlète → Approche Créative & Résolution Problèmes
+              {t('description') as string}
             </motion.p>
 
             <motion.div
@@ -122,7 +123,7 @@ const Hero = () => {
                   href="#projects"
                   className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  Voir mes projets
+                  {t('cta_primary') as string}
                   <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -138,7 +139,7 @@ const Hero = () => {
                   href="#contact"
                   className="inline-flex items-center px-8 py-4 border-2 border-white/20 text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  Me contacter
+                  {t('cta_secondary') as string}
                   <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
@@ -152,16 +153,16 @@ const Hero = () => {
               variants={itemVariants}
             >
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">15+</div>
-                <div className="text-sm text-gray-400">Années musique</div>
+                <div className="text-2xl font-bold text-white">{t('stats.music_years') as string}</div>
+                <div className="text-sm text-gray-400">{t('stats.music_label') as string}</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">1350</div>
-                <div className="text-sm text-gray-400">ELO échecs</div>
+                <div className="text-2xl font-bold text-white">{t('stats.chess_elo') as string}</div>
+                <div className="text-sm text-gray-400">{t('stats.chess_label') as string}</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">4</div>
-                <div className="text-sm text-gray-400">Domaines d&apos;expertise</div>
+                <div className="text-2xl font-bold text-white">{t('stats.expertise_domains') as string}</div>
+                <div className="text-sm text-gray-400">{t('stats.expertise_label') as string}</div>
               </div>
             </motion.div>
           </motion.div>
@@ -179,7 +180,7 @@ const Hero = () => {
                     <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
                       <span className="text-4xl font-bold text-white">JD</span>
                     </div>
-                    <p className="text-white/80 text-sm">Photo de profil</p>
+                    <p className="text-white/80 text-sm">{t('profile_photo') as string}</p>
                   </div>
                 </div>
               </div>
