@@ -60,7 +60,7 @@ const adminSections = [
 export default function AdminPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<{ name: string } | null>(null);
 
   useEffect(() => {
     // Vérifier si l'utilisateur est connecté

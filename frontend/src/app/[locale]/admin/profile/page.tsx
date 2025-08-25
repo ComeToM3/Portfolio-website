@@ -70,7 +70,7 @@ export default function AdminProfilePage() {
       setIsEditing(false);
     } catch (error: unknown) {
       console.error('Erreur lors de la sauvegarde:', error);
-      setError(error.response?.data?.error || 'Erreur lors de la sauvegarde');
+      setError((error as { response?: { data?: { error?: string } } })?.response?.data?.error || 'Erreur lors de la sauvegarde');
     } finally {
       setIsSaving(false);
     }
