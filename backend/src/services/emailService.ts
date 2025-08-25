@@ -109,7 +109,7 @@ export class EmailService {
   ): Promise<boolean> {
     try {
       const html = this.compileTemplate(templateName, data);
-      const subject = data.subject || 'Message from Hordearii';
+      const subject = data['subject'] || 'Message from Hordearii';
       
       return await this.sendEmail({
         to,
