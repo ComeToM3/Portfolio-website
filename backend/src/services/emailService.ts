@@ -32,13 +32,13 @@ export class EmailService {
   static async initialize(): Promise<void> {
     try {
       // Configuration du transporteur
-      this.transporter = nodemailer.createTransporter({
-        host: process.env.SMTP_HOST || 'smtp.gmail.com',
-        port: parseInt(process.env.SMTP_PORT || '587'),
-        secure: process.env.SMTP_SECURE === 'true',
+      this.transporter = nodemailer.createTransport({
+        host: process.env['SMTP_HOST'] || 'smtp.gmail.com',
+        port: parseInt(process.env['SMTP_PORT'] || '587'),
+        secure: process.env['SMTP_SECURE'] === 'true',
         auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
+          user: process.env['SMTP_USER'],
+          pass: process.env['SMTP_PASS'],
         },
         tls: {
           rejectUnauthorized: false,
@@ -82,7 +82,7 @@ export class EmailService {
   static async sendEmail(options: EmailOptions): Promise<boolean> {
     try {
       const mailOptions = {
-        from: process.env.SMTP_FROM || 'noreply@hordearii.ca',
+        from: process.env['SMTP_FROM'] || 'noreply@hordearii.ca',
         to: options.to,
         subject: options.subject,
         html: options.html,
@@ -174,7 +174,7 @@ export class EmailService {
     resetToken: string,
     userName: string
   ): Promise<boolean> {
-    const resetUrl = `${process.env.FRONTEND_URL}/reset-password?token=${resetToken}`;
+    const resetUrl = `${process.env['FRONTEND_URL']}/reset-password?token=${resetToken}`;
     
     return this.sendTemplateEmail(userEmail, 'password-reset', {
       subject: 'Réinitialisation de votre mot de passe - Hordearii',
