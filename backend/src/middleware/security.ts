@@ -57,6 +57,11 @@ export const customSecurityHeaders = (_req: Request, res: Response, next: NextFu
 
 // Middleware pour bloquer les requêtes suspectes
 export const blockSuspiciousRequests = (req: Request, res: Response, next: NextFunction) => {
+  // En mode développement, être moins restrictif pour les tests
+  if (process.env['NODE_ENV'] === 'development') {
+    return next();
+  }
+
   const userAgent = req.get('User-Agent') || '';
   const suspiciousPatterns = [
     /bot/i,
@@ -104,6 +109,11 @@ export const blockSuspiciousRequests = (req: Request, res: Response, next: NextF
 
 // Middleware pour valider l'origine des requêtes
 export const validateOrigin = (req: Request, res: Response, next: NextFunction) => {
+  // En mode développement, être moins restrictif pour les tests
+  if (process.env['NODE_ENV'] === 'development') {
+    return next();
+  }
+
   const allowedOrigins = [
     'http://localhost:3000',
     'https://hordearii.ca',

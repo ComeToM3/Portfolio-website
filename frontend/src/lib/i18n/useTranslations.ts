@@ -5,19 +5,21 @@ const messages = {
     hero: {
       title: 'Johan',
       subtitle: 'Dominguez',
-      description: 'Développeur Junior Full-Stack en Formation | HTML•CSS•JS•SQL•Flutter•Express | Kinésiologue•Musicien•Athlète → Approche Créative & Résolution Problèmes',
+      description: 'Développeur Junior Full-Stack | Ergonomie du Travail & Kinésiologie | HTML•CSS•JS•SQL•Flutter•Express | Leadership Collaboratif & Résolution Problèmes',
       tagline: 'Unique Tech Junior - Soft Skills Exceptionnelles',
       cta_primary: 'Voir mes projets',
       cta_secondary: 'Me contacter',
       scroll_down: 'Faites défiler',
       profile_photo: 'Photo de profil',
       stats: {
-        music_years: '15+',
-        music_label: 'Années musique',
-        chess_elo: '1350',
-        chess_label: 'ELO échecs',
-        expertise_domains: '4',
-        expertise_label: 'Domaines d\'expertise'
+        projects_completed: '6+',
+        projects_label: 'Projets réalisés',
+        leadership_years: '15+',
+        leadership_label: 'Années leadership',
+        tech_stack: '8+',
+        tech_stack_label: 'Technologies maîtrisées',
+        soft_skills: '6+',
+        soft_skills_label: 'Soft skills expertes'
       }
     },
     navigation: {
@@ -114,7 +116,7 @@ const messages = {
       },
       learning_approach: {
         title: 'Approche d\'Apprentissage',
-        description: 'Formation AEC Développement Web + projets personnels + collaboration IA-Humain. Maîtrise rapide de nouvelles technologies (Flutter en 2 jours) et développement d\'applications complètes avec architecture moderne.'
+        description: 'Formation AEC Développement Web + projets personnels + collaboration IA-Humain. Maîtrise rapide de nouvelles technologies et développement d\'applications complètes avec architecture moderne.'
       },
       skills_list: [
         { id: '1', name: 'HTML5 Sémantique', level: 85, category: 'Frontend', icon: '🌐', color: 'from-orange-500 to-red-500' },
@@ -164,7 +166,7 @@ const messages = {
         {
           id: '1',
           title: 'Todo AI App - Flutter',
-          description: 'Complete mobile application developed with AI collaboration in 2 days. Modern architecture: Riverpod, Isar DB, TensorFlow Lite, FLChart. AI classification, behavioral coaching, comprehensive tests.',
+          description: 'Complete mobile application developed with AI collaboration . Modern architecture: Riverpod, Isar DB, TensorFlow Lite, FLChart. AI classification, behavioral coaching, comprehensive tests.',
           category: 'Mobile',
           technologies: ['Flutter', 'Dart', 'Riverpod', 'Isar DB', 'TensorFlow Lite', 'FLChart'],
           githubUrl: 'https://github.com/ComeToM3/todo-ai-app',
@@ -326,19 +328,21 @@ const messages = {
     hero: {
       title: 'Johan',
       subtitle: 'Dominguez',
-      description: 'Junior Full-Stack Developer in Training | HTML•CSS•JS•SQL•Flutter•Express | Kinesiologist•Musician•Athlete → Creative Approach & Problem Solving',
+      description: 'Junior Full-Stack Developer | Workplace Ergonomics & Kinesiology Specialist | HTML•CSS•JS•SQL•Flutter•Express | Collaborative Leadership & Problem Solving',
       tagline: 'Unique Tech Junior - Exceptional Soft Skills',
       cta_primary: 'View my projects',
       cta_secondary: 'Contact me',
       scroll_down: 'Scroll down',
       profile_photo: 'Profile photo',
       stats: {
-        music_years: '15+',
-        music_label: 'Years of music',
-        chess_elo: '1350',
-        chess_label: 'Chess ELO',
-        expertise_domains: '4',
-        expertise_label: 'Expertise domains'
+        projects_completed: '6+',
+        projects_label: 'Projects completed',
+        leadership_years: '15+',
+        leadership_label: 'Years of leadership',
+        tech_stack: '8+',
+        tech_stack_label: 'Technologies mastered',
+        soft_skills: '6+',
+        soft_skills_label: 'Expert soft skills'
       }
     },
     navigation: {
@@ -485,7 +489,7 @@ const messages = {
         {
           id: '1',
           title: 'Todo AI App - Flutter',
-          description: 'Complete mobile application developed with AI collaboration in 2 days. Modern architecture: Riverpod, Isar DB, TensorFlow Lite, FLChart. AI classification, behavioral coaching, comprehensive tests.',
+          description: 'Complete mobile application developed with AI collaboration . Modern architecture: Riverpod, Isar DB, TensorFlow Lite, FLChart. AI classification, behavioral coaching, comprehensive tests.',
           category: 'Mobile',
           technologies: ['Flutter', 'Dart', 'Riverpod', 'Isar DB', 'TensorFlow Lite', 'FLChart'],
           githubUrl: 'https://github.com/ComeToM3/todo-ai-app',

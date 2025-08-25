@@ -13,7 +13,7 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     // Ajouter le token d'authentification si disponible
-    const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+    const token = typeof window !== 'undefined' ? localStorage.getItem('admin_token') : null;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -34,9 +34,9 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       // Token expiré ou invalide
       if (typeof window !== 'undefined') {
-        localStorage.removeItem('auth_token');
+        localStorage.removeItem('admin_token');
         // Rediriger vers la page de connexion si nécessaire
-        // window.location.href = '/login';
+        // window.location.href = '/admin/login';
       }
     }
     return Promise.reject(error);

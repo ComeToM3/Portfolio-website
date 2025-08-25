@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Hordearii - Portfolio Professionnel',
@@ -11,7 +12,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <html lang="fr" suppressHydrationWarning={true}>
+      <body>
+        {children}
+      </body>
+    </html>
+  );
 }
 
 

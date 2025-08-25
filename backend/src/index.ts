@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import compression from 'compression';
 import dotenv from 'dotenv';
 
 // Import des middlewares de sécurité
@@ -8,14 +9,24 @@ import { securityHeaders, customSecurityHeaders, blockSuspiciousRequests, valida
 import { generalLimiter } from './middleware/rateLimit';
 import { sanitizeInput } from './middleware/validation';
 import { errorHandler, notFoundHandler, methodNotAllowedHandler } from './middleware/errorHandler';
+import { requestLogger } from './utils/logger';
+import { CacheService } from './services/cacheService';
 
 // Import des routes
 import authRoutes from './routes/auth';
 import projectRoutes from './routes/projects';
 import skillRoutes from './routes/skills';
+import notificationRoutes from './routes/notifications';
 
 // Charger les variables d'environnement
 dotenv.config();
+
+// Initialiser les services
+CacheService.initialize().catch(console.error);
+
+// Initialiser les services de notification
+import { NotificationService } from './services/notificationService';
+NotificationService.initialize();
 
 const app = express();
 const port = process.env['PORT'] || 3001;
@@ -28,8 +39,14 @@ app.use(validateOrigin);
 app.use(logSecurityEvents);
 app.use(limitRequestSize);
 
+// Compression des réponses
+app.use(compression());
+
 // Rate limiting
 app.use(generalLimiter);
+
+// Logging des performances
+app.use(requestLogger);
 
 // CORS avec configuration stricte
 app.use(cors({
@@ -77,6 +94,27 @@ app.get('/health', (_req, res) => {
   });
 });
 
+// Route pour les statistiques de performance
+app.get('/stats', async (_req, res) => {
+  try {
+    const cacheStats = await CacheService.getStats();
+    res.json({
+      cache: cacheStats,
+      performance: {
+        uptime: process.uptime(),
+        memory: process.memoryUsage(),
+        cpu: process.cpuUsage()
+      },
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: 'Erreur lors de la récupération des statistiques',
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
     // Route pour les informations de sécurité (admin seulement)
     app.get('/security-info', (_req, res) => {
       res.json({
@@ -95,6 +133,7 @@ app.get('/health', (_req, res) => {
     app.use('/api/auth', authRoutes);
     app.use('/api/projects', projectRoutes);
     app.use('/api/skills', skillRoutes);
+    app.use('/api/notifications', notificationRoutes);
 
 // Gestion des routes non trouvées
 app.use('*', notFoundHandler);
@@ -105,12 +144,14 @@ app.use(methodNotAllowedHandler);
 // Gestionnaire d'erreurs global (doit être en dernier)
 app.use(errorHandler);
 
-// Démarrer le serveur
-app.listen(port, () => {
-  console.log(`🚀 Hordearii Backend API running on port ${port}`);
-  console.log(`📊 Health check: http://localhost:${port}/health`);
-  console.log(`🌍 Environment: ${process.env['NODE_ENV'] || 'development'}`);
-  console.log(`🔒 Security: Rate limiting, CORS, Helmet, Validation enabled`);
-});
+// Démarrer le serveur seulement si on n'est pas en mode test
+if (process.env['NODE_ENV'] !== 'test') {
+  app.listen(port, () => {
+    console.log(`🚀 Hordearii Backend API running on port ${port}`);
+    console.log(`📊 Health check: http://localhost:${port}/health`);
+    console.log(`🌍 Environment: ${process.env['NODE_ENV'] || 'development'}`);
+    console.log(`🔒 Security: Rate limiting, CORS, Helmet, Validation enabled`);
+  });
+}
 
 export default app;

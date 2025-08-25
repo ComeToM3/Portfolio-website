@@ -26,7 +26,7 @@ docs/
 │
 ├── deployment/              # Déploiement et infrastructure
 │   ├── deployment-specifications.md     # Spécifications de déploiement
-│   └── hiveos-deployment-guide.md       # Guide déploiement HiveOS
+│   └── ubuntu-server-deployment-guide.md       # Guide déploiement Ubuntu Server
 │
 ├── security/                # Sécurité
 │   └── security-specifications.md       # Spécifications de sécurité
@@ -53,7 +53,7 @@ docs/
 4. **`docs/guides/backend-development-guide.md`** - Guide Backend
 
 ### Pour le déploiement :
-1. **`docs/deployment/hiveos-deployment-guide.md`** - Guide de déploiement sur HiveOS
+1. **`docs/deployment/ubuntu-server-deployment-guide.md`** - Guide de déploiement sur Ubuntu Server
 2. **`docs/deployment/deployment-specifications.md`** - Spécifications d'infrastructure
 
 ### Pour la sécurité et les tests :

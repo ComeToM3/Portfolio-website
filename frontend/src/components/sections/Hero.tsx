@@ -44,7 +44,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-blue-900 pt-16">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-blue-900 pt-16 pb-32">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.1%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
@@ -153,16 +153,20 @@ const Hero = () => {
               variants={itemVariants}
             >
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">{t('stats.music_years') as string}</div>
-                <div className="text-sm text-gray-400">{t('stats.music_label') as string}</div>
+                <div className="text-2xl font-bold text-white">{t('stats.projects_completed') as string}</div>
+                <div className="text-sm text-gray-400">{t('stats.projects_label') as string}</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">{t('stats.chess_elo') as string}</div>
-                <div className="text-sm text-gray-400">{t('stats.chess_label') as string}</div>
+                <div className="text-2xl font-bold text-white">{t('stats.leadership_years') as string}</div>
+                <div className="text-sm text-gray-400">{t('stats.leadership_label') as string}</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">{t('stats.expertise_domains') as string}</div>
-                <div className="text-sm text-gray-400">{t('stats.expertise_label') as string}</div>
+                <div className="text-2xl font-bold text-white">{t('stats.tech_stack') as string}</div>
+                <div className="text-sm text-gray-400">{t('stats.tech_stack_label') as string}</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white">{t('stats.soft_skills') as string}</div>
+                <div className="text-sm text-gray-400">{t('stats.soft_skills_label') as string}</div>
               </div>
             </motion.div>
           </motion.div>
@@ -185,7 +189,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Floating Elements */}
+              {/* Floating Elements - Diversified Profile */}
               <motion.div
                 className="absolute -top-4 -right-4 w-16 h-16 bg-green-500/20 rounded-full border border-green-500/30 flex items-center justify-center"
                 animate={{
@@ -201,7 +205,7 @@ const Hero = () => {
               </motion.div>
 
               <motion.div
-                className="absolute -bottom-4 -left-4 w-16 h-16 bg-red-500/20 rounded-full border border-red-500/30 flex items-center justify-center"
+                className="absolute -bottom-8 -left-4 w-16 h-16 bg-red-500/20 rounded-full border border-red-500/30 flex items-center justify-center"
                 animate={{
                   y: [0, 10, 0],
                 }}
@@ -226,6 +230,162 @@ const Hero = () => {
                 }}
               >
                 <span className="text-xl">🍰</span>
+              </motion.div>
+
+              {/* Additional Floating Elements */}
+              <motion.div
+                className="absolute -top-8 left-1/2 w-14 h-14 bg-blue-500/20 rounded-full border border-blue-500/30 flex items-center justify-center"
+                animate={{
+                  y: [0, -8, 0],
+                }}
+                transition={{
+                  duration: 3.5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="text-xl">💻</span>
+              </motion.div>
+
+              <motion.div
+                className="absolute top-1/2 -right-12 w-14 h-14 bg-purple-500/20 rounded-full border border-purple-500/30 flex items-center justify-center"
+                animate={{
+                  x: [0, 5, 0],
+                }}
+                transition={{
+                  duration: 4.5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="text-xl">🧠</span>
+              </motion.div>
+
+              <motion.div
+                className="absolute -bottom-12 right-1/2 w-12 h-12 bg-orange-500/20 rounded-full border border-orange-500/30 flex items-center justify-center"
+                animate={{
+                  y: [0, 8, 0],
+                }}
+                transition={{
+                  duration: 3.8,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="text-lg">🔥</span>
+              </motion.div>
+
+              <motion.div
+                className="absolute top-1/4 -left-12 w-10 h-10 bg-cyan-500/20 rounded-full border border-cyan-500/30 flex items-center justify-center"
+                animate={{
+                  x: [0, -3, 0],
+                }}
+                transition={{
+                  duration: 4.2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="text-sm">🎯</span>
+              </motion.div>
+
+              <motion.div
+                className="absolute bottom-1/4 -right-8 w-11 h-11 bg-pink-500/20 rounded-full border border-pink-500/30 flex items-center justify-center"
+                animate={{
+                  x: [0, 4, 0],
+                }}
+                transition={{
+                  duration: 3.2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="text-sm">💪</span>
+              </motion.div>
+
+              {/* Additional Strong Profile Icons */}
+              <motion.div
+                className="absolute top-1/3 -left-16 w-13 h-13 bg-emerald-500/20 rounded-full border border-emerald-500/30 flex items-center justify-center"
+                animate={{
+                  x: [0, -4, 0],
+                }}
+                transition={{
+                  duration: 4.8,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="text-sm">⚡</span>
+              </motion.div>
+
+              <motion.div
+                className="absolute bottom-1/3 -right-10 w-12 h-12 bg-indigo-500/20 rounded-full border border-indigo-500/30 flex items-center justify-center"
+                animate={{
+                  x: [0, 6, 0],
+                }}
+                transition={{
+                  duration: 3.6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="text-sm">🎨</span>
+              </motion.div>
+
+              <motion.div
+                className="absolute -top-12 left-1/3 w-11 h-11 bg-teal-500/20 rounded-full border border-teal-500/30 flex items-center justify-center"
+                animate={{
+                  y: [0, -6, 0],
+                }}
+                transition={{
+                  duration: 4.1,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="text-sm">🏆</span>
+              </motion.div>
+
+              <motion.div
+                className="absolute -bottom-16 left-1/3 w-10 h-10 bg-amber-500/20 rounded-full border border-amber-500/30 flex items-center justify-center"
+                animate={{
+                  y: [0, 6, 0],
+                }}
+                transition={{
+                  duration: 3.9,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="text-sm">🌟</span>
+              </motion.div>
+
+              <motion.div
+                className="absolute top-1/2 -left-20 w-9 h-9 bg-rose-500/20 rounded-full border border-rose-500/30 flex items-center justify-center"
+                animate={{
+                  x: [0, -2, 0],
+                }}
+                transition={{
+                  duration: 5.2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="text-xs">💡</span>
+              </motion.div>
+
+              <motion.div
+                className="absolute bottom-1/2 -right-16 w-10 h-10 bg-violet-500/20 rounded-full border border-violet-500/30 flex items-center justify-center"
+                animate={{
+                  x: [0, 3, 0],
+                }}
+                transition={{
+                  duration: 4.7,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="text-xs">🎭</span>
               </motion.div>
             </div>
           </motion.div>

@@ -1,10 +1,270 @@
 {
-  "HomePage": {
-    "title": "Bienvenue",
-    "description": "Ceci est la page d'accueil en français"
-  },
-  "Navigation": {
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "view": "Voir",
+    "download": "Télécharger",
+    "share": "Partager",
+    "copy": "Copier",
+    "language": "Langue",
+    "theme": "Thème",
+    "settings": "Paramètres",
+    "menu": "Menu",
     "home": "Accueil",
-    "about": "À propos"
+    "about": "À propos",
+    "contact": "Contact",
+    "projects": "Projets",
+    "skills": "Compétences",
+    "experience": "Expérience",
+    "education": "Formation",
+    "blog": "Blog",
+    "admin": "Administration",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "register": "S'inscrire",
+    "profile": "Profil",
+    "dashboard": "Tableau de bord"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "contact": "Contact",
+    "admin": "Admin",
+    "mobile_app": "Application Mobile",
+    "download": "Télécharger"
+  },
+  "hero": {
+    "title": "Johan Dominguez",
+    "subtitle": "Développeur Full Stack",
+    "description": "Passionné par la technologie, la musique et l'innovation. Je crée des solutions numériques qui allient performance et créativité.",
+    "cta_primary": "Voir mes projets",
+    "cta_secondary": "Me contacter",
+    "scroll_down": "Défiler vers le bas",
+    "tagline": "Développeur • Musicien • Athlète • Pâtissier"
+  },
+  "about": {
+    "title": "À propos de moi",
+    "subtitle": "Un parcours unique, une vision innovante",
+    "description": "Je suis un développeur full stack passionné avec une approche unique combinant technologie, créativité et discipline. Mon parcours diversifié m'a permis de développer une perspective holistique du développement logiciel.",
+    "personal_info": {
+      "title": "Informations personnelles",
+      "name": "Nom",
+      "age": "Âge",
+      "location": "Localisation",
+      "email": "Email",
+      "phone": "Téléphone",
+      "website": "Site web",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
+    "interests": {
+      "title": "Centres d'intérêt",
+      "technology": "Technologie",
+      "music": "Musique",
+      "sports": "Sports",
+      "cooking": "Cuisine",
+      "travel": "Voyage",
+      "reading": "Lecture"
+    },
+    "values": {
+      "title": "Mes valeurs",
+      "innovation": "Innovation",
+      "quality": "Qualité",
+      "collaboration": "Collaboration",
+      "learning": "Apprentissage continu",
+      "creativity": "Créativité",
+      "excellence": "Excellence"
+    }
+  },
+  "skills": {
+    "title": "Compétences",
+    "subtitle": "Technologies et outils maîtrisés",
+    "technical_skills": "Compétences techniques",
+    "soft_skills": "Compétences personnelles",
+    "languages": "Langages de programmation",
+    "frameworks": "Frameworks & Bibliothèques",
+    "databases": "Bases de données",
+    "tools": "Outils & Plateformes",
+    "cloud": "Cloud & DevOps",
+    "mobile": "Développement mobile",
+    "web": "Développement web",
+    "level": {
+      "beginner": "Débutant",
+      "intermediate": "Intermédiaire",
+      "advanced": "Avancé",
+      "expert": "Expert"
+    },
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "devops": "DevOps",
+      "database": "Base de données",
+      "design": "Design",
+      "testing": "Tests",
+      "other": "Autres"
+    }
+  },
+  "projects": {
+    "title": "Projets",
+    "subtitle": "Mes réalisations récentes",
+    "view_project": "Voir le projet",
+    "view_code": "Voir le code",
+    "live_demo": "Démo live",
+    "technologies_used": "Technologies utilisées",
+    "project_type": "Type de projet",
+    "duration": "Durée",
+    "team_size": "Taille de l'équipe",
+    "role": "Rôle",
+    "description": "Description",
+    "challenges": "Défis",
+    "solutions": "Solutions",
+    "results": "Résultats",
+    "learnings": "Apprentissages",
+    "categories": {
+      "web_app": "Application web",
+      "mobile_app": "Application mobile",
+      "api": "API",
+      "website": "Site web",
+      "ecommerce": "E-commerce",
+      "dashboard": "Dashboard",
+      "game": "Jeu",
+      "other": "Autre"
+    },
+    "status": {
+      "completed": "Terminé",
+      "in_progress": "En cours",
+      "planned": "Planifié",
+      "on_hold": "En pause"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Travaillons ensemble",
+    "description": "Vous avez un projet en tête ? Parlons-en ! Je suis toujours ouvert aux nouvelles opportunités et collaborations intéressantes.",
+    "form": {
+      "name": "Nom complet",
+      "email": "Adresse email",
+      "subject": "Sujet",
+      "message": "Message",
+      "send": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé avec succès !",
+      "error": "Erreur lors de l'envoi du message"
+    },
+    "info": {
+      "title": "Informations de contact",
+      "email": "Email",
+      "phone": "Téléphone",
+      "location": "Localisation",
+      "availability": "Disponibilité",
+      "response_time": "Temps de réponse"
+    },
+    "social": {
+      "title": "Réseaux sociaux",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "youtube": "YouTube"
+    }
+  },
+  "admin": {
+    "title": "Administration",
+    "dashboard": "Tableau de bord",
+    "profile": "Profil",
+    "projects": "Gestion des projets",
+    "skills": "Gestion des compétences",
+    "users": "Utilisateurs",
+    "settings": "Paramètres",
+    "logout": "Déconnexion",
+    "login": {
+      "title": "Connexion administrateur",
+      "email": "Email",
+      "password": "Mot de passe",
+      "login": "Se connecter",
+      "error": "Email ou mot de passe incorrect"
+    },
+    "profile_editor": {
+      "title": "Éditeur de profil",
+      "personal_info": "Informations personnelles",
+      "bio": "Biographie",
+      "skills": "Compétences",
+      "experience": "Expérience",
+      "education": "Formation",
+      "save": "Enregistrer les modifications"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 Johan Dominguez. Tous droits réservés.",
+    "made_with": "Fait avec",
+    "by": "par",
+    "privacy_policy": "Politique de confidentialité",
+    "terms_of_service": "Conditions d'utilisation",
+    "sitemap": "Plan du site"
+  },
+  "pwa": {
+    "install_prompt": {
+      "title": "Installer l'application",
+      "description": "Ajoutez ce portfolio à votre écran d'accueil pour un accès rapide et hors ligne",
+      "install": "Installer",
+      "later": "Plus tard",
+      "learn_more": "En savoir plus"
+    },
+    "offline": {
+      "title": "Vous êtes hors ligne",
+      "description": "Pas de problème ! Cette application fonctionne même sans connexion internet.",
+      "retry": "Réessayer la connexion",
+      "features": "Fonctionnalités disponibles hors ligne"
+    }
+  },
+  "errors": {
+    "404": {
+      "title": "Page non trouvée",
+      "description": "La page que vous recherchez n'existe pas.",
+      "back_home": "Retour à l'accueil"
+    },
+    "500": {
+      "title": "Erreur serveur",
+      "description": "Une erreur s'est produite. Veuillez réessayer plus tard.",
+      "retry": "Réessayer"
+    },
+    "network": {
+      "title": "Erreur de connexion",
+      "description": "Impossible de se connecter au serveur. Vérifiez votre connexion internet.",
+      "retry": "Réessayer"
+    }
+  },
+  "seo": {
+    "home": {
+      "title": "Johan Dominguez - Portfolio Professionnel | Hordearii",
+      "description": "Portfolio professionnel de Johan Dominguez - Développeur Full Stack, Musicien, Athlète et Pâtissier. Découvrez mes projets, compétences et expériences."
+    },
+    "about": {
+      "title": "À propos - Johan Dominguez | Hordearii",
+      "description": "Découvrez le parcours unique de Johan Dominguez, développeur full stack passionné par la technologie, la musique et l'innovation."
+    },
+    "projects": {
+      "title": "Projets - Johan Dominguez | Hordearii",
+      "description": "Explorez les projets et réalisations de Johan Dominguez, développeur full stack créatif et innovant."
+    },
+    "contact": {
+      "title": "Contact - Johan Dominguez | Hordearii",
+      "description": "Contactez Johan Dominguez pour discuter de vos projets et opportunités de collaboration."
+    }
   }
 }

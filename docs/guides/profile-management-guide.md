@@ -54,7 +54,7 @@ Formation AEC Développement Web + 15 ans de musique + compétition athlétique 
 • Responsive design, UX/UI intuitive, accessibilité web
 • Backend : Node.js, Express.js, architecture API RESTful (en développement)
 • Bases de données : SQL, NoSQL, optimisation requêtes (formation continue)
-• **Flutter/Dart mobile natif** : Application complète développée en 2 jours avec IA
+• **Flutter/Dart mobile natif** : Application complète développée  avec IA
 • **Architecture moderne** : Riverpod, Isar, TensorFlow Lite, FLChart (projet Hordearii App - Phase 2)
 
 **Infrastructure & Hardware (Compétences pratiques) :**
@@ -68,7 +68,7 @@ Formation AEC Développement Web + 15 ans de musique + compétition athlétique 
 🧠 CAPACITÉS LEADERSHIP & GESTION DE PROJET (Développées sur 15+ ans)
 **Autodidacte Passionné :**
 • Apprentissage autodidacte de technologies complexes par passion et discipline
-• **Collaboration IA-Humain** : Développement d'applications complètes en 2 jours
+• **Collaboration IA-Humain** : Développement d'applications complètes 
 • Veille technologique constante, adaptation rapide aux évolutions
 • Mentorat naturel : J'adore transmettre et former
 
@@ -130,7 +130,7 @@ Formation AEC Développement Web + 15 ans de musique + compétition athlétique 
 • **Intelligence émotionnelle** : Compréhension des dynamiques humaines, communication interpersonnelle avancée
 • **Vision holistique** rare chez les juniors
 • **Capacité d'apprentissage** exceptionnelle démontrée par parcours autodidacte
-• **Collaboration IA-Humain** prouvée par développement d'applications complètes en 2 jours
+• **Collaboration IA-Humain** prouvée par développement d'applications complètes 
 • **Communication inspirante** qui fédère équipes autour d'objectifs ambitieux
 • **Pensée stratégique** développée par la pratique des échecs compétitifs
 
@@ -207,7 +207,7 @@ APPRENTISSAGE MÉTHODOLOGIQUE :
 • Capacité de développement d'applications complètes en peu de temps
 
 🎯 COMPÉTENCES UNIQUES DÉVELOPPÉES :
-• **Apprentissage rapide** : Maîtrise de Flutter en 2 jours
+• **Apprentissage rapide** : Maîtrise de Flutter 
 • **Collaboration IA-Humain** : Développement efficace avec outils modernes
 • **Architecture logicielle** : Conception d'applications complètes
 • **Infrastructure personnelle** : HiveOS + Docker pour hébergement web

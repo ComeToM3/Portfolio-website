@@ -1,5 +1,7 @@
 import { prisma } from '../lib/prisma';
 import { createError } from '../middleware/errorHandler';
+import { CacheService } from './cacheService';
+import { measurePerformance } from '../utils/logger';
 
 // Types pour les projets
 export interface CreateProjectData {
@@ -40,64 +42,79 @@ export class ProjectService {
    * Créer un nouveau projet
    */
   static async createProject(data: CreateProjectData) {
-    try {
-      const project = await prisma.project.create({
-        data: {
-          title: data.title,
-          description: data.description,
-          image: data.image || null,
-          technologies: data.technologies,
-          githubUrl: data.githubUrl || null,
-          liveUrl: data.liveUrl || null,
-          featured: data.featured || false,
-          order: data.order || 0,
-          userId: data.userId
-        },
-        include: {
-          user: {
-            select: {
-              id: true,
-              name: true,
-              email: true
+    return measurePerformance('createProject', async () => {
+      try {
+        const project = await prisma.project.create({
+          data: {
+            title: data.title,
+            description: data.description,
+            image: data.image || null,
+            technologies: data.technologies,
+            githubUrl: data.githubUrl || null,
+            liveUrl: data.liveUrl || null,
+            featured: data.featured || false,
+            order: data.order || 0,
+            userId: data.userId
+          },
+          include: {
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true
+              }
             }
           }
-        }
-      });
+        });
 
-      return project;
-    } catch (error) {
-      if (error instanceof Error && error.message.includes('Unique constraint')) {
-        throw createError.conflict('Un projet avec ce titre existe déjà pour cet utilisateur');
+        // Invalider le cache des projets
+        await CacheService.invalidateProjects();
+
+        return project;
+      } catch (error) {
+        if (error instanceof Error && error.message.includes('Unique constraint')) {
+          throw createError.conflict('Un projet avec ce titre existe déjà pour cet utilisateur');
+        }
+        throw createError.internal('Erreur lors de la création du projet');
       }
-      throw createError.internal('Erreur lors de la création du projet');
-    }
+    });
   }
 
   /**
    * Obtenir tous les projets avec filtres et pagination
    */
   static async getProjects(filters: ProjectFilters = {}, userId?: string) {
-    try {
-      const {
-        featured,
-        search,
-        page = 1,
-        limit = 10,
-        sortBy = 'createdAt',
-        sortOrder = 'desc'
-      } = filters;
+    return measurePerformance('getProjects', async () => {
+      try {
+        const {
+          featured,
+          search,
+          page = 1,
+          limit = 10,
+          sortBy = 'createdAt',
+          sortOrder = 'desc'
+        } = filters;
 
-      const skip = (page - 1) * limit;
+        // Générer une clé de cache unique basée sur les filtres
+        const cacheKey = `projects:list:${JSON.stringify({ ...filters, userId })}`;
 
-      // Construire les conditions de filtrage
-      const where: any = {};
+        // Essayer de récupérer du cache
+        const cached = await CacheService.get(cacheKey);
+        if (cached) {
+          return cached;
+        }
 
-      if (userId) {
-        where.userId = userId;
-      }
+        const skip = (page - 1) * limit;
 
-      if (featured !== undefined) {
-        where.featured = featured;
+        // Construire les conditions de filtrage
+        const where: any = {};
+
+        if (userId) {
+          where.userId = userId;
+        }
+
+        if (featured !== undefined) {
+          where.featured = featured;
       }
 
       if (search) {
@@ -130,7 +147,7 @@ export class ProjectService {
         take: limit
       });
 
-      return {
+      const result = {
         projects,
         pagination: {
           page,
@@ -141,10 +158,16 @@ export class ProjectService {
           hasPrev: page > 1
         }
       };
+
+      // Mettre en cache le résultat (TTL de 30 minutes pour les listes)
+      await CacheService.set(cacheKey, result, 1800);
+
+      return result;
     } catch (error) {
       throw createError.internal('Erreur lors de la récupération des projets');
     }
-  }
+  });
+}
 
   /**
    * Obtenir un projet par ID

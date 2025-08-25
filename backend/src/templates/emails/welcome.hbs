@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue sur Hordearii</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .welcome-message {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #4B5563;
+        }
+        .features {
+            background-color: #F9FAFB;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .feature:last-child {
+            margin-bottom: 0;
+        }
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #3B82F6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 12px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .footer {
+            background-color: #1F2937;
+            color: #D1D5DB;
+            padding: 30px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .social-links {
+            margin: 20px 0;
+        }
+        .social-links a {
+            color: #3B82F6;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        @media (max-width: 600px) {
+            .header, .content, .footer {
+                padding: 20px;
+            }
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎉 Bienvenue sur Hordearii !</h1>
+        </div>
+        
+        <div class="content">
+            <div class="welcome-message">
+                <p>Bonjour <strong>{{userName}}</strong>,</p>
+                <p>Nous sommes ravis de vous accueillir sur Hordearii ! Votre compte a été créé avec succès.</p>
+            </div>
+
+            <div class="features">
+                <h3 style="margin-top: 0; color: #1F2937;">Ce que vous pouvez faire :</h3>
+                
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <span>Accéder à votre espace personnel</span>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">💼</div>
+                    <span>Gérer vos projets et compétences</span>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🔔</div>
+                    <span>Recevoir des notifications personnalisées</span>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <span>Suivre vos statistiques et performances</span>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="{{FRONTEND_URL}}" class="cta-button">
+                    Accéder à mon espace
+                </a>
+            </div>
+
+            <div class="social-links">
+                <p>Suivez-nous sur :</p>
+                <a href="https://github.com/ComeToM3">GitHub</a> |
+                <a href="https://linkedin.com/in/johan-dominguez">LinkedIn</a> |
+                <a href="https://hordearii.ca">Site Web</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; {{currentYear}} Hordearii. Tous droits réservés.</p>
+            <p>Cet email a été envoyé à {{userName}}. Si vous n'êtes pas à l'origine de cette inscription, veuillez ignorer cet email.</p>
+        </div>
+    </div>
+</body>
+</html>

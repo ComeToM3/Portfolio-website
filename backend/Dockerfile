@@ -2,7 +2,7 @@
 FROM node:18-alpine AS base
 
 # Installer les dépendances nécessaires
-RUN apk add --no-cache libc6-compat curl
+RUN apk add --no-cache libc6-compat curl openssl
 
 # Étape de développement
 FROM base AS deps
@@ -28,6 +28,10 @@ RUN npx prisma generate
 
 # Build TypeScript
 RUN npm run build
+
+# Script de démarrage avec migrations
+COPY --chown=nextjs:nodejs docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Étape de production
 FROM base AS runner
@@ -59,4 +63,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:3001/health || exit 1
 
 # Commande de démarrage
-CMD ["npm", "start"]
+ENTRYPOINT ["docker-entrypoint.sh"]

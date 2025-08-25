@@ -1,3 +1,4 @@
+import Header from '@/components/layout/Header';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Skills from '@/components/sections/Skills';
@@ -13,13 +14,16 @@ export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
 
   return (
-    <main>
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+        <Footer />
+      </main>
+    </>
   );
 }

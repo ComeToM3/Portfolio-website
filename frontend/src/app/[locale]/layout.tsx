@@ -11,7 +11,7 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
   params
 }: {
@@ -25,11 +25,9 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale}>
-      <body className={inter.className} suppressHydrationWarning={true}>
-        <Header />
-        {children}
-      </body>
-    </html>
+    <div className={inter.className}>
+      <Header />
+      {children}
+    </div>
   );
 }

@@ -1,13 +1,13 @@
-# 🚀 GUIDE DE DÉPLOIEMENT HIVEOS - HORDEARII.CA
+# 🚀 GUIDE DE DÉPLOIEMENT UBUNTU SERVER - HORDEARII.CA
 
 ## 🎯 Vue d'ensemble du processus
 
-Le déploiement sur HiveOS nécessite plusieurs étapes pour transformer votre rig de minage en serveur web fonctionnel. Voici le processus complet :
+Le déploiement sur Ubuntu Server nécessite plusieurs étapes pour transformer votre serveur en serveur web fonctionnel. Voici le processus complet :
 
 ## 📋 PRÉREQUIS
 
-### **1. Infrastructure HiveOS**
-- Rig de minage HiveOS fonctionnel
+### **1. Infrastructure Ubuntu Server**
+- Serveur Ubuntu Server 20.04+ fonctionnel
 - Connexion SSH activée
 - Accès root ou sudo
 - Au moins 4GB RAM disponible
