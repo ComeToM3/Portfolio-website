@@ -48,7 +48,7 @@ create_directories() {
     mkdir -p $PROJECT_DIR
     mkdir -p $BACKUP_DIR
     mkdir -p /var/log/hordearii
-    mkdir -p $PROJECT_DIR/nginx/ssl
+    # Ne pas créer nginx/ssl ici, ce sera fait après le transfert du projet
     log_success "Dossiers créés avec succès"
 }
 
@@ -183,6 +183,9 @@ transfer_project() {
     esac
     
     log_success "Projet transféré"
+    
+    # Créer les dossiers nginx après le transfert du projet
+    mkdir -p $PROJECT_DIR/nginx/ssl
 }
 
 # Fonction pour configurer les variables d'environnement
