@@ -123,7 +123,7 @@ export default function AdminPage() {
         {/* Welcome Section */}
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            Bienvenue dans votre espace d'administration
+            Bienvenue dans votre espace d&apos;administration
           </h2>
           <p className="text-gray-600 dark:text-gray-400">
             Gérez votre portfolio professionnel depuis cette interface centralisée.

@@ -68,7 +68,7 @@ export default function AdminProfilePage() {
       await userService.updateProfile(profile);
       setSuccess('Profil mis à jour avec succès');
       setIsEditing(false);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Erreur lors de la sauvegarde:', error);
       setError(error.response?.data?.error || 'Erreur lors de la sauvegarde');
     } finally {

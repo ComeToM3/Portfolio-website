@@ -10,7 +10,6 @@ import {
   Trash2, 
   Reply,
   Search,
-  Filter,
   Archive,
   Star,
   Clock
@@ -274,7 +273,7 @@ export default function AdminMessagesPage() {
                 ].map(({ key, label }) => (
                   <button
                     key={key}
-                    onClick={() => setFilter(key as any)}
+                    onClick={() => setFilter(key as 'all' | 'unread' | 'read' | 'starred' | 'archived')}
                     className={`px-3 py-1 text-xs rounded-full transition-colors ${
                       filter === key
                         ? 'bg-blue-600 text-white'
