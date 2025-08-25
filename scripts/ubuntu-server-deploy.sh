@@ -201,21 +201,21 @@ NODE_ENV=production
 DOMAIN=$DOMAIN
 
 # ===== BASE DE DONNÉES =====
-DATABASE_URL=postgresql://profile_user:$(openssl rand -base64 32)@postgres:5432/profilejd
+DATABASE_URL=postgresql://profile_user:$(openssl rand -hex 32)@postgres:5432/profilejd
 POSTGRES_DB=profilejd
 POSTGRES_USER=profile_user
-POSTGRES_PASSWORD=$(openssl rand -base64 32)
+POSTGRES_PASSWORD=$(openssl rand -hex 32)
 
 # ===== REDIS CACHE =====
 REDIS_URL=redis://redis:6379
 
 # ===== AUTHENTIFICATION =====
-JWT_SECRET=$(openssl rand -base64 64)
+JWT_SECRET=$(openssl rand -hex 64)
 JWT_EXPIRES_IN=15m
-JWT_REFRESH_SECRET=$(openssl rand -base64 64)
+JWT_REFRESH_SECRET=$(openssl rand -hex 64)
 
 # ===== MONITORING =====
-GRAFANA_PASSWORD=$(openssl rand -base64 32)
+GRAFANA_PASSWORD=$(openssl rand -hex 32)
 
 # ===== SÉCURITÉ =====
 CORS_ORIGIN=https://$DOMAIN
