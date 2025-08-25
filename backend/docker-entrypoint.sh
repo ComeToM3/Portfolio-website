@@ -9,7 +9,7 @@ echo "🚀 Démarrage du backend Hordearii..."
 
 # Attendre que la base de données soit prête
 echo "⏳ Attente de la base de données..."
-until npx prisma db execute --stdin <<< "SELECT 1;" > /dev/null 2>&1 || npx prisma db push --accept-data-loss > /dev/null 2>&1; do
+until npx prisma db push --accept-data-loss > /dev/null 2>&1; do
   echo "Base de données non disponible, attente..."
   sleep 2
 done
